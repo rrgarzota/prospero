@@ -1,0 +1,310 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    background-color: #fffefe;
+    overflow-x: hidden; 
+
+}
+
+/* Make the iframe responsive and ensure no horizontal overflow */
+iframe.airtable-embed {
+    width: 100%; /* Make the iframe width 100% of its parent container */
+    height: 95vh; /* Adjust height to fit the viewport */
+    background: transparent;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Include padding/border in width calculation */
+}
+
+
+.fund-btn{
+    font-size: 14px;
+}
+
+
+
+.navbar .nav-link {
+    color: #fffefe!important;
+    font-weight: 600;
+}
+
+.navbar .nav-item:not(:first-of-type) {
+    padding-left: 2dvb;
+}
+
+.fund-btn {
+    background: #fffefe;
+    border: none;
+    padding: 4px 17px;
+    cursor: pointer;
+    color: #000000;
+    font-weight: 600;
+}
+.banner-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* text-align: center; */
+}
+.banner-content img {
+    margin-bottom: 20px;
+}
+.banner-content p {
+    font-size: 1.2rem;
+}
+
+/* subnavigation */
+.sub-nav {
+    padding: 10px 10px;
+    color: #fffefe;
+}
+
+.sub-navigation{
+    background: #4a4a4a;
+    padding: 40px;
+}
+
+.sub-nav .container {
+    display: flex;
+    justify-content: space-between; /* Ensure space between buttons */
+    gap: 10px; /* Add space between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line on smaller screens */
+    border-bottom: 1px solid #fffefe;
+}
+
+.sub-nav .btn {
+    background: transparent;
+    border: 1px solid #fffefe;
+    color: #fffefe;
+    font-size: 13px;
+    text-align: center; /* Centers text in each button */
+    padding: 5px 0; /* Vertical padding */
+    flex: 1; /* Ensure buttons take equal width on larger screens */
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+#filter-container .nav-link{
+    color: #898989;
+    font-size: 16px;
+}
+
+#filter-container .nav-link.active{
+    color: #000000;
+    background-color: transparent;
+}
+
+/* On screens smaller than 768px, make buttons take 45% of the container width */
+@media (max-width: 768px) {
+    .sub-nav .btn {
+        flex-basis: 45%; /* Buttons take 45% of the width */
+    }
+
+    .sub-nav .container {
+        border-bottom: 0px;
+    }
+
+    .sub-nav .btn{
+        margin-bottom: 10px;
+    }
+}
+
+/* On small screens (below 480px), make buttons take up full width (stack vertically) */
+@media (max-width: 480px) {
+    .sub-nav .btn {
+        flex-basis: 100%; /* Buttons take 100% width and stack vertically */
+    }
+}
+
+.sub-nav .active {
+    border-bottom: inherit;
+    background-color: #fffefe;
+    color: #000000;
+}
+
+
+.offers, h1, h2, h3, h4, h5 {
+    padding: 20px;
+    /* text-align: center; */
+    font-weight: 600;
+}
+
+h1, h2, h3, h4, h5{
+padding: 0px;
+}
+
+.offers h3,
+.offers h4,
+.offers h5,
+.inline-link{
+    color: #898989;
+}
+
+
+.shop-btn {
+    background: #0070db;
+    color: #fffefe;
+    border: none;
+    padding: 4px 50px;
+    cursor: pointer;
+    font-size: 13px;
+}
+.filters {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header-text-content {
+    margin: 0px 75px;
+}
+
+/* Target the specific section for the bottom border */
+.navbar .nav-wrapper {
+    border-bottom: 2px solid #fffefe; /* Apply bottom border here */
+}
+
+.hero-section {
+    background: url('./retailer-images/walmart/Walmart_header_desktop.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 56px; /* Adjust for navbar height */
+    width: 100vw;
+    /* height: 100vh; */
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Add margin between the icons */
+.navbar .icon-container i {
+    margin-left: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+
+.hero-section .container {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+}
+
+/* Initially show the navbar */
+.navbar {
+    background: transparent;
+    padding: 14px 10px;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: top 0.3s ease; /* Smooth transition */
+}
+
+/* Hide navbar when scrolling down */
+.navbar.hide-navbar {
+    top: -100px; /* Move it out of view */
+}
+
+/* Optional: Navbar background color when scrolled */
+.navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-collapse.collapse {
+    background: inherit; /* Ensure the collapse section uses the same background */
+}
+
+#navbarNav{
+    border-bottom: 2px solid #fffefe;
+    padding: 10px 0px;
+}
+
+.inline-link {
+    margin-top: 10px; /* Add some space above the Learn More link */
+    
+}
+
+.section-description-cont{
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 20px; /* Space between checkboxes */
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center; /* Align checkboxes and text vertically */
+}
+
+.checkbox {
+    margin-right: 5px; /* Space between checkbox and label */
+}
+
+.filter-settings{
+    color: #898989;
+    font-size: 15px;
+}
+
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 70px;
+        background: url('./retailer-images/walmart/Walmart_header_mobile.png') no-repeat center center;
+        background-size: cover;
+    }
+    .inline-link {
+        margin-top: 10px; /* Add some space above the Learn More link */
+    }   
+
+    .section-description-cont{
+        flex-direction: column; /* Stack the items vertically on smaller screens */
+        align-items: flex-start; /* Align to the left */
+    
+    }
+}
+
+/* Left border for specific links on desktop */
+@media (min-width: 992px) {
+    .navbar .nav-item:nth-child(2) .nav-link,
+    .navbar .nav-item:nth-child(3) .nav-link,
+    .navbar .nav-item:nth-child(4) .nav-link,
+    .navbar .nav-item:nth-child(5) .nav-link {
+        border-left: 2px solid #fffefe; /* Add left border to these links */
+        padding: 0px 0px 0px 15px;
+    }
+
+    .navbar .nav-item .nav-link{
+        padding: 0px 0px 0px 0px;
+    }
+
+    .sub-nav {
+        padding: 10px 0px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1200px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1400px;
+    }
+    
+    .hero-section {
+        min-height: 40vh;
+    }
+}

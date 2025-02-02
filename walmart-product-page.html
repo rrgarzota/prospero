@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walmart Offers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Add FontAwesome CDN -->
+    <style>
+        
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="./retailer-images/walmart/e-logo.png" alt="Logo" height="40" class="rounded-3">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Retailer Cards</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Promos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">How It Works</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Memberships</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Ev'ryday Credits: $306.78</a></li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <button class="fund-btn btn ms-auto">Fund My Account</button>
+                            <div class="icon-container ms-2">
+                                <i class="fas fa-user-circle"></i>
+                                <i class="fas fa-wallet"></i>
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Banner Content -->
+        <div class="banner-content">
+            <div class="container">
+                <div class="header-text-content">
+                    <img src="./retailer-images/walmart/walmart-logo.png" alt="Walmart Logo">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sub-navigation -->
+    <section class="sub-navigation mt-2">
+        <nav class="sub-nav">
+            <div class="container px-0">
+                <button class="btn">Retailer Card</button>
+                <button class="btn active">Product Offers</button>
+                <button class="btn">Promos</button>
+                <button class="btn">Your CVS Expert</button>
+                <button class="btn">Real Savings</button>
+            </div>
+        </nav>
+    </section>
+    
+    
+    
+    <!-- Offers Section -->
+    <section class="offers my-5">
+        <div class="container">
+            <h1>Products Offers</h1>
+            <div class="d-flex section-description-cont">
+                <h3 class="mb-0">Products that save you more</h3>
+                <a href="#" class="inline-link">Learn More ></a>
+            </div>
+            <hr class="mb-2">
+            <h4>Hand-picked offers and information put together by real shoppers - our Ev'ryday Experts.
+                <br> Copy & paste the product codes to find the items on offer at {retailer}.com.</h4>
+            <button class="shop-btn btn mt-4">Shop Online</button>
+            <!-- <div class="filters mt-3">
+                <button class="btn btn-outline-secondary">All Products</button>
+                <button class="btn btn-outline-secondary">Grocery</button>
+                <button class="btn btn-outline-secondary">Household Essentials</button>
+                <button class="btn btn-outline-secondary">Personal Care</button>
+                <button class="btn btn-outline-secondary">Category Name</button>
+            </div> -->
+            <div class="d-flex section-description-cont mt-5">
+                <ul class="nav nav-pills" id="filter-container">
+                    <li class="nav-item">
+                      <a class="nav-link active ps-0" aria-current="page" href="#">All Products</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Grocery</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Household Essentials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Personal Care</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Category Name</a>
+                    </li>
+                </ul>
+                <a href="#" class="inline-link">Offer Terms</a>
+            </div>
+            <hr class="mb-3 mt-2">
+            <div class="checkbox-group filter-settings">
+                <label><input type="checkbox" class="checkbox"> Price Reduction</label>
+                <label><input type="checkbox" class="checkbox"> Loyalty Savings</label>
+                <label><input type="checkbox" class="checkbox"> New Offers</label>
+            </div>
+            
+            
+        </div>
+    </section>
+
+    <section class="products-list">
+        <div class="container px-3">
+            <iframe class="airtable-embed" 
+                src="https://airtable.com/embed/appjyZs2N4jZ1qGRl/shrj7q9KBVhIrSe3B" 
+                frameborder="0">
+            </iframe>
+        </div>
+    </section>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="common.js"></script>
+</body>
+</html>
