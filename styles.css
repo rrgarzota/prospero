@@ -1,5 +1,19 @@
+@font-face {
+    font-family: 'CircularStdBlack';
+    src: url('fonts/CircularStd-Black.ttf') format('truetype');
+    font-weight: 900; /* Black is usually 900 */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CircularStdMedium';
+    src: url('fonts/CircularStd-Medium.ttf') format('truetype');
+    font-style: normal;
+}
+
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'CircularStdMedium';
     margin: 0;
     padding: 0;
     font-size: 14px;
@@ -26,7 +40,7 @@ iframe.airtable-embed {
 
 .navbar .nav-link {
     color: #fffefe!important;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 
 .navbar .nav-item:not(:first-of-type) {
@@ -39,7 +53,7 @@ iframe.airtable-embed {
     padding: 4px 17px;
     cursor: pointer;
     color: #000000;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 .banner-content {
     display: flex;
@@ -63,7 +77,7 @@ iframe.airtable-embed {
 
 .sub-navigation{
     background: #4a4a4a;
-    padding: 40px;
+    padding: 20px;
 }
 
 .sub-nav .container {
@@ -82,8 +96,8 @@ iframe.airtable-embed {
     text-align: center; /* Centers text in each button */
     padding: 5px 0; /* Vertical padding */
     flex: 1; /* Ensure buttons take equal width on larger screens */
-    font-weight: 600;
-    margin-bottom: 40px;
+    /* font-weight: 600; */
+    margin-bottom: 30px;
 }
 
 #filter-container .nav-link{
@@ -94,6 +108,10 @@ iframe.airtable-embed {
 #filter-container .nav-link.active{
     color: #000000;
     background-color: transparent;
+}
+
+.navbar-toggler{
+    background-color: #fff!important;
 }
 
 /* On screens smaller than 768px, make buttons take 45% of the container width */
@@ -109,12 +127,41 @@ iframe.airtable-embed {
     .sub-nav .btn{
         margin-bottom: 10px;
     }
+
+    .fund-btn{
+        background: #fffefe;
+        border: none;
+        padding: 5px 17px;
+        cursor: pointer;
+        color: #000000;
+        width: 160px;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
+
+    .navbar{
+        background-color: #000000!important;
+    }
+
+    .nav-item:first-of-type .nav-link{
+        padding-left: 15px!important;
+    }
 }
 
 /* On small screens (below 480px), make buttons take up full width (stack vertically) */
 @media (max-width: 480px) {
     .sub-nav .btn {
         flex-basis: 100%; /* Buttons take 100% width and stack vertically */
+    }
+    .navbar .nav-item {
+        padding-left: 2dvb;
+    }
+}
+
+@media (max-width: 560px) {
+    .banner-content img {
+        width: 80%;
     }
 }
 
@@ -128,7 +175,7 @@ iframe.airtable-embed {
 .offers, h1, h2, h3, h4, h5 {
     padding: 20px;
     /* text-align: center; */
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 
 h1, h2, h3, h4, h5{
@@ -145,12 +192,17 @@ padding: 0px;
 
 .shop-btn {
     background: #0070db;
-    color: #fffefe;
+    color: #fffefe!important;
     border: none;
     padding: 4px 50px;
     cursor: pointer;
     font-size: 13px;
 }
+.shop-btn:hover,
+.shop-btn:active {
+    background: #0070dbc9;
+}
+
 .filters {
     margin-top: 20px;
     display: flex;
@@ -214,7 +266,11 @@ padding: 0px;
 
 /* Optional: Navbar background color when scrolled */
 .navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.navbar.scrolled #navbarNav{
+    border-bottom: none;
 }
 
 .navbar-collapse.collapse {
@@ -248,6 +304,7 @@ padding: 0px;
 
 .checkbox {
     margin-right: 5px; /* Space between checkbox and label */
+    margin-bottom: 2px;
 }
 
 .filter-settings{
@@ -255,6 +312,21 @@ padding: 0px;
     font-size: 15px;
 }
 
+.bg-grey{
+    background-color: #d8d8d8;
+}
+
+.bg-grey h3{
+    color: #737373;
+}
+
+.bg-highlight-row{
+    background-color: #f0f1f1;
+}
+
+.nav-right{
+    align-items: center!important;
+}
 
 /* Mobile Styles */
 @media (max-width: 768px) {
@@ -271,6 +343,9 @@ padding: 0px;
         flex-direction: column; /* Stack the items vertically on smaller screens */
         align-items: flex-start; /* Align to the left */
     
+    }
+    .nav-right{
+        align-items: normal!important;
     }
 }
 
@@ -305,6 +380,81 @@ padding: 0px;
     }
     
     .hero-section {
+        min-height: 60vh;
+    }
+}
+
+@media (min-width: 1700px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1400px;
+    }
+    
+    .hero-section {
         min-height: 40vh;
     }
+}
+
+
+.step-card {
+    background: #0171dc;
+    color: white;
+    border-radius: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.3s ease-in-out;
+}
+
+.step-number {
+    background: white;
+    color: #0171dc;
+    /* font-weight: bold; */
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+.step-card h2 {
+    font-size: 1.6rem;
+    /* font-weight: bold; */
+}
+
+.step-card p {
+    font-size: 1rem;
+    /* font-weight: 600; */
+}
+
+.step-img {
+    max-width: 80%; /* Control width for better layout */
+    height: 250px; /* Set a fixed height for uniformity */
+    object-fit: contain; /* Ensure image scales well */
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+}
+
+.img-bigger {
+    height: 300px; /* Set a fixed height for uniformity */
+}
+
+.pt-res{
+    padding-top: 30px;
+}
+
+@media (max-width: 992px) {
+    
+}
+
+@media (max-width: 768px) {
+   
+}
+
+.navbar-toggler-icon,
+.navbar-toggler:hover{
+    background-color: #fff;
 }

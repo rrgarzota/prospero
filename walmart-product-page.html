@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="./retailer-images/walmart/e-logo.png" alt="Logo" height="40" class="rounded-3">
+                    <img src="./retailer-images/walmart/e-logo.png" alt="Logo" height="40" class="rounded-2">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
                             <li class="nav-item"><a class="nav-link" href="#">Memberships</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Ev'ryday Credits: $306.78</a></li>
                     </ul>
-                    <ul class="navbar-nav ms-auto align-items-center">
+                    <ul class="navbar-nav ms-auto nav-right">
                         <button class="fund-btn btn ms-auto">Fund My Account</button>
                             <div class="icon-container ms-2">
                                 <i class="fas fa-user-circle"></i>
@@ -68,7 +68,7 @@
     
     
     <!-- Offers Section -->
-    <section class="offers my-5">
+    <section class="offers py-5 bg-highlight-row mt-2">
         <div class="container">
             <h1>Products Offers</h1>
             <div class="d-flex section-description-cont">
@@ -78,7 +78,9 @@
             <hr class="mb-2">
             <h4>Hand-picked offers and information put together by real shoppers - our Ev'ryday Experts.
                 <br> Copy & paste the product codes to find the items on offer at {retailer}.com.</h4>
-            <button class="shop-btn btn mt-4">Shop Online</button>
+                <button type="button" onclick="window.open('https://www.walmart.com/', '_blank')" class="shop-btn btn mt-4">
+                    Shop Online
+                </button>                
             <!-- <div class="filters mt-3">
                 <button class="btn btn-outline-secondary">All Products</button>
                 <button class="btn btn-outline-secondary">Grocery</button>
@@ -87,23 +89,24 @@
                 <button class="btn btn-outline-secondary">Category Name</button>
             </div> -->
             <div class="d-flex section-description-cont mt-5">
-                <ul class="nav nav-pills" id="filter-container">
+                <ul class="nav nav-pills flex-column flex-md-row" id="filter-container">
                     <li class="nav-item">
-                      <a class="nav-link active ps-0" aria-current="page" href="#">All Products</a>
+                        <a class="nav-link active ps-0 d-block d-md-inline w-100 w-md-auto" aria-current="page" href="#">All Products</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Grocery</a>
+                        <a class="nav-link d-block d-md-inline w-100 w-md-auto" href="#">Grocery</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Household Essentials</a>
+                        <a class="nav-link d-block d-md-inline w-100 w-md-auto" href="#">Household Essentials</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Personal Care</a>
+                        <a class="nav-link d-block d-md-inline w-100 w-md-auto" href="#">Personal Care</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Category Name</a>
+                        <a class="nav-link d-block d-md-inline w-100 w-md-auto" href="#">Category Name</a>
                     </li>
                 </ul>
+                
                 <a href="#" class="inline-link">Offer Terms</a>
             </div>
             <hr class="mb-3 mt-2">
@@ -117,12 +120,87 @@
         </div>
     </section>
 
-    <section class="products-list">
+    <section class="products-list bg-highlight-row pb-5">
         <div class="container px-3">
             <iframe class="airtable-embed" 
                 src="https://airtable.com/embed/appjyZs2N4jZ1qGRl/shrj7q9KBVhIrSe3B" 
                 frameborder="0">
             </iframe>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers mt-2 py-5 bg-grey">
+        <div class="container">
+            <h1 class="">Ev'ryday Product Offers</h1>
+            <h3 class=" mb-4">Click. Copy. Paste. Save.</h3>
+    
+            <div class="row g-4">
+                <!-- Step 1 -->
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="step-card p-4">
+                        <!-- Row 1: Step Number -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="step-number">1</div>
+                            </div>
+                        </div>
+                        <!-- Row 2: Left (Text) | Right (Image) -->
+                        <div class="row align-items-center mt-3">
+                            <div class="col-12 col-md-7">
+                                <h2 class="pt-res">Open the Retailer's Website</h2>
+                                <p class="mt-3">Have an <span class="highlight">Ev’ryday</span> tab open and the retailer's website open in your browser.</p>
+                            </div>
+                            <div class="col-12 col-md-5 text-center">
+                                <img src="./retailer-images/walmart/Group 49897.png" alt="Paste Code" class="step-img img-bigger">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Step 2 -->
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="step-card p-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="step-number">2</div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mt-3">
+                            <div class="col-12 col-md-7">
+                                <h2>Copy Product Code</h2>
+                                <p class="mt-3">Search product offers on <span class="highlight">Ev’ryday</span> and click the button to copy the code for the product you want.</p>
+                            </div>
+                            <div class="col-12 col-md-5 text-center">
+                                <img src="./retailer-images/walmart/Group -1.png" alt="Retailer Website" class="step-img">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Step 3 -->
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="step-card p-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="step-number">3</div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mt-3">
+                            <div class="col-12 col-md-7">
+                                <h2>Paste Product Code</h2>
+                                <p class="mt-3">Paste the code in the search bar of the retailer’s website. The product will appear with offers—add to cart and repeat.</p>
+                            </div>
+                            <div class="col-12 col-md-5 text-center">
+                                <img src="./retailer-images/walmart/Group -2.png" alt="Copy Code" class="step-img">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     
