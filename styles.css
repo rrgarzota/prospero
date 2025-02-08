@@ -462,14 +462,18 @@ padding: 0px;
 .footer {
     background-color: #333; /* Dark gray */
     color: white;
-    padding: 40px 20px;
+    padding: 80px 20px 120px 20px;
 }
 
 .footer-container {
     display: flex;
-    justify-content: space-between;
-    max-width: 1400px;
-    margin: auto;
+        justify-content: space-between;
+        max-width: 1400px;
+        margin: auto;
+        border-top: 1px solid #ffffffd9;
+        border-bottom: 1px solid #ffffffd9;
+        padding-top: 30px;
+        padding-bottom: 10px;
 }
 
 /* Wrap first two sections together */
@@ -620,3 +624,7 @@ padding: 0px;
     }
 }
 
+.py-phone-cont{
+    padding-top: 90px !important;
+    padding-bottom: 120px !important;;
+}
