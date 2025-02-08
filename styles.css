@@ -458,3 +458,165 @@ padding: 0px;
 .navbar-toggler:hover{
     background-color: #fff;
 }
+
+.footer {
+    background-color: #333; /* Dark gray */
+    color: white;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* Wrap first two sections together */
+.footer-left {
+    display: flex;
+    gap: 60px; /* Reduced spacing for better responsiveness */
+    flex: 2; /* Allows them to take more space */
+}
+
+/* Third column (contact section) pushed to the right */
+.footer-section.contact {
+    margin-left: auto; /* Moves this section to the right */
+    flex: 0.5;
+}
+
+/* Logo styling */
+.footer-logo {
+    margin-right: 15px;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: auto;
+}
+
+/* Footer Links - Common styling for all sections */
+.footer-links,
+.footer-section ul {
+    list-style: none;
+    padding: 0 0 0 30px;
+    margin: 0;
+}
+
+.footer-links li,
+.footer-section li {
+    margin-bottom: 8px;
+}
+
+/* Footer Links Style */
+.footer-links li a,
+.footer-section li a {
+    color: white;
+    text-decoration: none; /* No underline by default */
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.footer-links li a:hover,
+.footer-section li a:hover {
+    text-decoration: underline;
+}
+
+/* Contact section styling */
+.contact p {
+    margin-bottom: 10px;
+}
+
+.contact-btn {
+    background: white;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-btn:hover {
+    background: #ddd;
+}
+
+.phone-number {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.reverse-phone {
+    transform: scaleX(-1);
+    display: inline-block;
+}
+
+.phone-number-cont {
+    font-size: 25px;
+}
+
+.call-us-cont {
+    font-size: 16px;
+}
+
+.footer-section.contact a {
+    color: white;
+}
+
+/* 🔽 Responsive Design for Tablets & Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        padding: 10px 0;
+    }
+
+    .footer-section.contact {
+        margin-left: 0; /* Reset margin */
+        flex: unset;
+    }
+
+    .footer-logo img {
+        width: 40px; /* Slightly smaller logo */
+    }
+
+    .phone-number-cont {
+        font-size: 20px; /* Reduce size for smaller screens */
+    }
+}
+
+/* 🔽 Responsive Design for Small Screens */
+@media (max-width: 480px) {
+    .footer {
+        padding: 20px 10px; /* Reduce padding */
+    }
+
+    .footer-links,
+    .footer-section ul {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .footer-logo img {
+        width: 35px; /* Even smaller logo */
+    }
+
+    .contact-btn {
+        width: 100%; /* Make button full-width */
+    }
+
+    .phone-number-cont {
+        font-size: 18px;
+    }
+}
+
