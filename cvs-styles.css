@@ -1,0 +1,18 @@
+.hero-section {
+    background: url('./retailer-images/cvs/CVS_header_desktop.png') no-repeat center center;
+}
+.shop-btn {
+    background: #cc0100;
+}
+.shop-btn:hover,
+.shop-btn:active {
+    background: #cc0100c9;
+}
+
+.step-card {
+    background: #cc0100;
+}
+
+.step-number {
+    color: #cc0100;
+}

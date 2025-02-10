@@ -1,0 +1,18 @@
+.hero-section {
+    background: url('./retailer-images/home-depot/Home\ Depot_header_desktop.png') no-repeat center center;
+}
+.shop-btn {
+    background: #f96201;
+}
+.shop-btn:hover,
+.shop-btn:active {
+    background: #f96201c9;
+}
+
+.step-card {
+    background: #f96201;
+}
+
+.step-number {
+    color: #f96201;
+}

@@ -1,0 +1,18 @@
+.hero-section {
+    background: url('./retailer-images/walmart/Walmart_header_desktop.png') no-repeat center center;
+}
+.shop-btn {
+    background: #0070db;
+}
+.shop-btn:hover,
+.shop-btn:active {
+    background: #0070dbc9;
+}
+
+.step-card {
+    background: #0171dc;
+}
+
+.step-number {
+    color: #0171dc;
+}
