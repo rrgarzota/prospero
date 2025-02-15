@@ -1,0 +1,18 @@
+.hero-section {
+    background: url("./retailer-images/Target/Target_header_desktop.png") no-repeat center center;
+}
+.shop-btn {
+    background: #c80000;
+}
+.shop-btn:hover,
+.shop-btn:active {
+    background: #c80000c9;
+}
+
+.step-card {
+    background: #c80000;
+}
+
+.step-number {
+    color: #c80000;
+}

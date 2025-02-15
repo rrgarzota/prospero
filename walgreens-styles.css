@@ -1,0 +1,18 @@
+.hero-section {
+    background: url("./retailer-images/Walgreens/Walgreens_header_desktop.png") no-repeat center center;
+}
+.shop-btn {
+    background: #c81630;
+}
+.shop-btn:hover,
+.shop-btn:active {
+    background: #c81630c9;
+}
+
+.step-card {
+    background: #c81630;
+}
+
+.step-number {
+    color: #c81630;
+}

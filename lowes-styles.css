@@ -1,0 +1,18 @@
+.hero-section {
+    background: url("./retailer-images/Lowe's/Lowes_header_desktop.png") no-repeat center center;
+}
+.shop-btn {
+    background: #004990;
+}
+.shop-btn:hover,
+.shop-btn:active {
+    background: #004990c9;
+}
+
+.step-card {
+    background: #004990;
+}
+
+.step-number {
+    color: #004990;
+}

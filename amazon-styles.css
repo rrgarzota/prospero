@@ -1,0 +1,18 @@
+.hero-section {
+    background: url('./retailer-images/Amazon/Amazon_header_desktop.png') no-repeat center center;
+}
+.shop-btn {
+    background: #fa9101;
+}
+.shop-btn:hover,
+.shop-btn:active {
+    background: #fa9101c9;
+}
+
+.step-card {
+    background: #fa9101;
+}
+
+.step-number {
+    color: #fa9101;
+}
