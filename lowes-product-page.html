@@ -57,13 +57,24 @@
     <section class="sub-navigation mt-2">
         <nav class="sub-nav">
             <div class="container px-0">
-                <button class="btn">Retailer Card</button>
-                <button class="btn active">Product Offers</button>
-                <button class="btn">Promos</button>
-                <button class="btn">Your Lowe's Expert</button>
-                <button class="btn">Real Savings</button>
+                <button onclick="window.open('./amazon-product-page.html', '_blank')" class="btn">Amazon</button>
+                <button onclick="window.open('./cvs-product-page.html', '_blank')" class="btn">CVS</button>
+                <button onclick="window.open('./home-depot-product-page.html', '_blank')" class="btn">Home Depot</button>
+                <button onclick="window.open('./lowes-product-page.html', '_blank')" class="btn active">Lowe's</button>
+                <button onclick="window.open('./target-product-page.html', '_blank')" class="btn">Target</button>
+                <button onclick="window.open('./walgreens-product-page.html', '_blank')" class="btn">Walgreens</button>
+                <button onclick="window.open('./walmart-product-page.html', '_blank')" class="btn">Walmart</button>
             </div>
         </nav>
+        <div class="container mt-10">
+            <div class="checkbox-group filter-settings">
+                <label>Retailer Card</label>
+                <label class="active">Product Offers</label>
+                <label>Promos</label>
+                <label>Steps To Saving</label>
+            </div>
+        </div>
+        
     </section>
     
     

@@ -283,7 +283,7 @@ padding: 0px;
 
 .checkbox-group {
     display: flex;
-    gap: 20px; /* Space between checkboxes */
+    gap: 40px; /* Space between checkboxes */
 }
 
 .checkbox-group label {
@@ -317,6 +317,20 @@ padding: 0px;
     align-items: center!important;
 }
 
+.mt-10{
+    margin-top: 10px!important;
+}
+
+.container{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.filter-settings .active{
+    text-decoration: underline;
+    color: #fff;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     .hero-section {
@@ -336,6 +350,12 @@ padding: 0px;
     .nav-right{
         align-items: normal!important;
     }
+
+    .checkbox-group {
+        display: block;
+        padding: 10px;
+    }
+    
 }
 
 /* Left border for specific links on desktop */
