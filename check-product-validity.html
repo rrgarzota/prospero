@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVS Product Price Scraper</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        textarea { width: 80%; height: 100px; margin-bottom: 10px; }
+        button { padding: 10px 15px; font-size: 16px; cursor: pointer; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+    </style>
+</head>
+<body>
+
+    <h2>CVS Product Price Scraper (No Node.js)</h2>
+    <textarea id="urls" placeholder="Enter product URLs (one per line)..."></textarea><br>
+    <button onclick="fetchPrices()">Get Prices</button>
+
+    <table id="results">
+        <thead>
+            <tr>
+                <th>Product URL</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        async function fetchPrice(url) {
+            try {
+                // Using AllOrigins CORS proxy to bypass restrictions
+                const proxyUrl = "https://api.allorigins.win/raw?url=";
+                const response = await fetch(proxyUrl + encodeURIComponent(url));
+
+                if (!response.ok) throw new Error(`Error fetching ${url}`);
+                const html = await response.text();
+
+                // Parse the HTML response
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, "text/html");
+
+                // Extract price from the known CVS price structure
+                let price = null;
+                let priceSpan = doc.querySelector('section.flex.flex-row.flex-1 > span:nth-child(2)');
+
+                if (priceSpan) {
+                    price = priceSpan.textContent.match(/[\d,.]+/)[0]; // Extract number after $
+                }
+
+                return { url, price: price ? `$${price}` : "Price not found" };
+            } catch (error) {
+                return { url, price: "Error fetching price" };
+            }
+        }
+
+        async function fetchPrices() {
+            let urls = document.getElementById("urls").value.split("\n").map(url => url.trim()).filter(url => url);
+            let resultsTable = document.querySelector("#results tbody");
+            resultsTable.innerHTML = "<tr><td colspan='2'>Fetching prices...</td></tr>";
+
+            let results = await Promise.all(urls.map(url => fetchPrice(url)));
+
+            resultsTable.innerHTML = results.map(res => `
+                <tr>
+                    <td><a href="${res.url}" target="_blank">${res.url}</a></td>
+                    <td>${res.price}</td>
+                </tr>
+            `).join("");
+        }
+    </script>
+
+</body>
+</html>
