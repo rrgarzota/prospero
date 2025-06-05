@@ -10,7 +10,8 @@
 
 </head>
 <body style="padding: 20px;">
-  <!-- Selection Row -->
+
+<!-- Selection Row -->
 <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 15px; align-items: flex-end;">
 
     <!-- Anchors Column -->
@@ -18,239 +19,246 @@
       <h2 style="font-size: 1.2em; margin-bottom: 8px;">Select up to 4 Anchors</h2>
       <select id="anchorSelect" multiple></select>
     </div>
-  
+
     <!-- Savings Column -->
     <div style="flex: 1; min-width: 300px;">
       <h2 style="font-size: 1.2em; margin-bottom: 8px;">Select up to 4 Savings</h2>
       <select id="savingsSelect" multiple></select>
     </div>
-  
-  </div>
-  
-  <!-- Generate Combos Button -->
-  <div style="margin-bottom: 25px;">
-    <button onclick="generateCombos()" class="btn btn-primary">
-      Generate Combos
-    </button>
-  </div>
-  
-  <!-- Combo Results -->
-  <h2>Combo Results</h2>
-  
-  <!-- Alert -->
-  <div id="comboAlert" class="alert alert-info" role="alert" style="margin-bottom: 15px;">
-    Choose Anchor and Savings cards to calculate combo.
-  </div>
-  
-  <!-- Combo Table -->
-  <table border="1" cellpadding="5" cellspacing="0" style="margin-bottom: 40px;">
-    <thead>
-      <tr>
-        <th>Anchor</th>
-        <th>Savings</th>
-        <th>SS Combo %</th>
-        <th>CS Combo %</th>
-      </tr>
-    </thead>
-    <tbody id="comboResults">
-    </tbody>
-  </table>
-  
-  <!-- Summary Section -->
-  <div id="summarySection" style="display: none; margin-top: 40px;">
-    <h2>Summary</h2>
-  
-    <!-- First row: SS Summary -->
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
-      <!-- SS Boxes -->
-      <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-        <h3>SS HIGHEST %</h3>
-        <div id="ssHighest" style="font-size: 1.5em; font-weight: bold; color: #2e7d32;"></div>
-      </div>
-  
-      <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-        <h3>SS LOWEST %</h3>
-        <div id="ssLowest" style="font-size: 1.5em; font-weight: bold; color: #c62828;"></div>
-      </div>
-  
-      <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-        <h3>SS COMBO %</h3>
-        <div id="ssCombo" style="font-size: 2em; font-weight: bold; color: #1565c0;"></div>
-      </div>
+
+</div>
+
+<!-- CS Calculation Mode Checkbox -->
+<div style="margin-bottom: 25px;">
+  <input type="checkbox" id="useSSForCS" checked>
+  <label for="useSSForCS">Use Savings SS % for CS Combo (Kristina's workaround)</label>
+</div>
+
+<!-- Generate Combos Button -->
+<div style="margin-bottom: 15px;">
+  <button onclick="generateCombos()" class="btn btn-primary">
+    Generate Combos
+  </button>
+</div>
+
+
+
+<!-- Combo Results -->
+<h2>Combo Results</h2>
+
+<!-- Alert -->
+<div id="comboAlert" class="alert alert-info" role="alert" style="margin-bottom: 15px;">
+  Choose Anchor and Savings cards to calculate combo.
+</div>
+
+<!-- Combo Table -->
+<table border="1" cellpadding="5" cellspacing="0" style="margin-bottom: 40px;">
+  <thead>
+    <tr>
+      <th>Anchor</th>
+      <th>Savings</th>
+      <th>SS Combo %</th>
+      <th>CS Combo %</th>
+    </tr>
+  </thead>
+  <tbody id="comboResults">
+  </tbody>
+</table>
+
+<!-- Summary Section -->
+<div id="summarySection" style="display: none; margin-top: 40px;">
+  <h2>Summary</h2>
+
+  <!-- First row: SS Summary -->
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
+    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+      <h3>SS HIGHEST %</h3>
+      <div id="ssHighest" style="font-size: 1.5em; font-weight: bold; color: #2e7d32;"></div>
     </div>
-  
-    <!-- Second row: CS Summary -->
-    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-      <!-- CS Boxes -->
-      <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-        <h3>CS HIGHEST %</h3>
-        <div id="csHighest" style="font-size: 1.5em; font-weight: bold; color: #2e7d32;"></div>
-      </div>
-  
-      <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-        <h3>CS LOWEST %</h3>
-        <div id="csLowest" style="font-size: 1.5em; font-weight: bold; color: #c62828;"></div>
-      </div>
-  
-      <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-        <h3>CS COMBO %</h3>
-        <div id="csCombo" style="font-size: 2em; font-weight: bold; color: #1565c0;"></div>
-      </div>
+
+    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+      <h3>SS LOWEST %</h3>
+      <div id="ssLowest" style="font-size: 1.5em; font-weight: bold; color: #c62828;"></div>
+    </div>
+
+    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+      <h3>SS COMBO %</h3>
+      <div id="ssCombo" style="font-size: 2em; font-weight: bold; color: #1565c0;"></div>
     </div>
   </div>
-  
-  
+
+  <!-- Second row: CS Summary -->
+  <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+      <h3>CS HIGHEST %</h3>
+      <div id="csHighest" style="font-size: 1.5em; font-weight: bold; color: #2e7d32;"></div>
+    </div>
+
+    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+      <h3>CS LOWEST %</h3>
+      <div id="csLowest" style="font-size: 1.5em; font-weight: bold; color: #c62828;"></div>
+    </div>
+
+    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+      <h3>CS COMBO %</h3>
+      <div id="csCombo" style="font-size: 2em; font-weight: bold; color: #1565c0;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Choices.js JS -->
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+<script>
+const retailers = [
+  { name: 'Under Armour', ss: 13.0, cs: 9.5, availableCS: true },
+  { name: 'Nike', ss: 12.0, cs: 8.5, availableCS: true },
+  { name: 'Athleta', ss: 11.5, cs: 8.0, availableCS: true },
+  { name: 'Adidas', ss: 11.5, cs: 8.0, availableCS: true },
+  { name: 'Target', ss: 5.2, cs: 0.0, availableCS: false },
+  { name: 'Amazon', ss: 2.7, cs: 0.0, availableCS: false },
+  { name: 'Dick\'s Sporting Goods', ss: 3.5, cs: 0.0, availableCS: false },
+  // NEW CARDS from image:
+  { name: 'Williams-Sonoma', ss: 9.0, cs: 5.5, availableCS: true },
+  { name: 'Pottery Barn', ss: 9.0, cs: 5.5, availableCS: true },
+  { name: 'West Elm', ss: 7.5, cs: 4.5, availableCS: true },
+  { name: 'Home Depot', ss: 5.2, cs: 0.0, availableCS: false },
+  { name: 'Lowe’s', ss: 6.1, cs: 0.0, availableCS: false },
+  { name: 'Ace Hardware', ss: 6.7, cs: 3.2, availableCS: true }
+];
 
 
+// Initialize Choices.js
+const anchorChoices = new Choices('#anchorSelect', {
+  removeItemButton: true,
+  maxItemCount: 4,
+  placeholderValue: 'Select up to 4 Anchors'
+});
 
+const savingsChoices = new Choices('#savingsSelect', {
+  removeItemButton: true,
+  maxItemCount: 4,
+  placeholderValue: 'Select up to 4 Savings'
+});
 
+// Populate dropdowns initially
+retailers.forEach(retailer => {
+  anchorChoices.setChoices([{ value: retailer.name, label: retailer.name }], 'value', 'label', false);
+  savingsChoices.setChoices([{ value: retailer.name, label: retailer.name }], 'value', 'label', false);
+});
 
-  <!-- Choices.js JS -->
-  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+// Function to update dropdowns to prevent overlap
+function updateDropdowns() {
+  const selectedAnchors = anchorChoices.getValue(true);
+  const selectedSavings = savingsChoices.getValue(true);
 
-  <script>
-    const retailers = [
-      { name: 'Under Armour', ss: 13.0, cs: 9.5, availableCS: true },
-      { name: 'Nike', ss: 12.0, cs: 8.5, availableCS: true },
-      { name: 'Athleta', ss: 11.5, cs: 8.0, availableCS: true },
-      { name: 'Adidas', ss: 11.5, cs: 8.0, availableCS: true },
-      { name: 'Target', ss: 5.2, cs: 0.0, availableCS: false },
-      { name: 'Amazon', ss: 2.7, cs: 0.0, availableCS: false },
-      { name: 'Dick\'s Sporting Goods', ss: 3.5, cs: 0.0, availableCS: false }
-    ];
+  const availableForAnchors = retailers
+    .filter(r => !selectedSavings.includes(r.name))
+    .map(r => ({ value: r.name, label: r.name }));
 
-    // Initialize Choices.js
-    const anchorChoices = new Choices('#anchorSelect', {
-      removeItemButton: true,
-      maxItemCount: 4,
-      placeholderValue: 'Select up to 4 Anchors'
-    });
+  const availableForSavings = retailers
+    .filter(r => !selectedAnchors.includes(r.name))
+    .map(r => ({ value: r.name, label: r.name }));
 
-    const savingsChoices = new Choices('#savingsSelect', {
-      removeItemButton: true,
-      maxItemCount: 4,
-      placeholderValue: 'Select up to 4 Savings'
-    });
+  anchorChoices.clearChoices();
+  anchorChoices.setChoices(availableForAnchors, 'value', 'label', true);
+  selectedAnchors.forEach(value => {
+    anchorChoices.setChoiceByValue(value);
+  });
 
-    // Populate dropdowns initially
-    retailers.forEach(retailer => {
-      anchorChoices.setChoices([{ value: retailer.name, label: retailer.name }], 'value', 'label', false);
-      savingsChoices.setChoices([{ value: retailer.name, label: retailer.name }], 'value', 'label', false);
-    });
+  savingsChoices.clearChoices();
+  savingsChoices.setChoices(availableForSavings, 'value', 'label', true);
+  selectedSavings.forEach(value => {
+    savingsChoices.setChoiceByValue(value);
+  });
+}
 
-    // Function to update dropdowns to prevent overlap
-    function updateDropdowns() {
-      const selectedAnchors = anchorChoices.getValue(true);
-      const selectedSavings = savingsChoices.getValue(true);
+// Add event listeners to update dropdowns on change
+anchorChoices.passedElement.element.addEventListener('change', updateDropdowns);
+savingsChoices.passedElement.element.addEventListener('change', updateDropdowns);
 
-      // Available for Anchors = all retailers except selected Savings
-      const availableForAnchors = retailers
-        .filter(r => !selectedSavings.includes(r.name))
-        .map(r => ({ value: r.name, label: r.name }));
+function generateCombos() {
+  const selectedAnchors = anchorChoices.getValue(true);
+  const selectedSavings = savingsChoices.getValue(true);
 
-      // Available for Savings = all retailers except selected Anchors
-      const availableForSavings = retailers
-        .filter(r => !selectedAnchors.includes(r.name))
-        .map(r => ({ value: r.name, label: r.name }));
+  const comboResults = document.getElementById('comboResults');
+  comboResults.innerHTML = '';
 
-      // Update Anchors dropdown
-      anchorChoices.clearChoices();
-      anchorChoices.setChoices(availableForAnchors, 'value', 'label', true);
-      selectedAnchors.forEach(value => {
-        anchorChoices.setChoiceByValue(value);
-      });
+  const summarySection = document.getElementById('summarySection');
 
-      // Update Savings dropdown
-      savingsChoices.clearChoices();
-      savingsChoices.setChoices(availableForSavings, 'value', 'label', true);
-      selectedSavings.forEach(value => {
-        savingsChoices.setChoiceByValue(value);
-      });
-    }
+  document.getElementById('comboAlert').style.display = 'none';
 
-    // Add event listeners to update dropdowns on change
-    anchorChoices.passedElement.element.addEventListener('change', updateDropdowns);
-    savingsChoices.passedElement.element.addEventListener('change', updateDropdowns);
+  const combos = [];
 
-    function generateCombos() {
-      const selectedAnchors = anchorChoices.getValue(true);
-      const selectedSavings = savingsChoices.getValue(true);
+  selectedAnchors.forEach(anchorName => {
+    const anchor = retailers.find(r => r.name === anchorName);
 
-      const comboResults = document.getElementById('comboResults');
-      comboResults.innerHTML = '';
+    selectedSavings.forEach(savingsName => {
+      const savings = retailers.find(r => r.name === savingsName);
 
-      // Show Summary only if we have combos
-      const summarySection = document.getElementById('summarySection');
+      const ssCombo = anchor.ss + savings.ss;
 
-      // Always hide alert after Generate is clicked
-      document.getElementById('comboAlert').style.display = 'none';
+      let csCombo = 0;
+      const useSSForCS = document.getElementById('useSSForCS').checked;
 
-      // Array to store combos for summary
-      const combos = [];
-
-      selectedAnchors.forEach(anchorName => {
-        const anchor = retailers.find(r => r.name === anchorName);
-
-        selectedSavings.forEach(savingsName => {
-          const savings = retailers.find(r => r.name === savingsName);
-
-          const ssCombo = anchor.ss + savings.ss;
-
-          let csCombo = 0;
-          if (!savings.availableCS) {
-            csCombo = anchor.cs + savings.ss;
-          } else {
-            csCombo = anchor.cs + savings.cs;
-          }
-
-          // Store combo info
-          combos.push({
-            anchor: anchor.name,
-            savings: savings.name,
-            ssCombo: ssCombo,
-            csCombo: csCombo
-          });
-
-          // Append row to results table
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${anchor.name}</td>
-            <td>${savings.name}</td>
-            <td>${ssCombo.toFixed(2)}%</td>
-            <td>${csCombo.toFixed(2)}%</td>
-          `;
-          comboResults.appendChild(row);
-        });
-      });
-
-      // If combos generated → show summary
-      if (combos.length > 0) {
-        summarySection.style.display = 'block';
-
-        const ssHighest = combos.reduce((max, combo) => combo.ssCombo > max.ssCombo ? combo : max, combos[0]);
-        const ssLowest = combos.reduce((min, combo) => combo.ssCombo < min.ssCombo ? combo : min, combos[0]);
-
-        const csHighest = combos.reduce((max, combo) => combo.csCombo > max.csCombo ? combo : max, combos[0]);
-        const csLowest = combos.reduce((min, combo) => combo.csCombo < min.csCombo ? combo : min, combos[0]);
-
-        const suggestedSSCombo = Math.floor(ssLowest.ssCombo);
-        const suggestedCSCombo = Math.floor(csLowest.csCombo);
-
-        document.getElementById('ssHighest').innerText = `${ssHighest.ssCombo.toFixed(2)}% \n${ssHighest.anchor} + ${ssHighest.savings}`;
-        document.getElementById('ssLowest').innerText = `${ssLowest.ssCombo.toFixed(2)}% \n${ssLowest.anchor} + ${ssLowest.savings}`;
-        document.getElementById('ssCombo').innerText = `${suggestedSSCombo}%`;
-
-        document.getElementById('csHighest').innerText = `${csHighest.csCombo.toFixed(2)}% \n${csHighest.anchor} + ${csHighest.savings}`;
-        document.getElementById('csLowest').innerText = `${csLowest.csCombo.toFixed(2)}% \n${csLowest.anchor} + ${csLowest.savings}`;
-        document.getElementById('csCombo').innerText = `${suggestedCSCombo}%`;
-
+      if (!savings.availableCS) {
+          // Case 1 → retailer not in CS → always use SS %
+          csCombo = (anchor.ss - 3.5) + savings.ss;
       } else {
-        // If no combos, hide summary again
-        summarySection.style.display = 'none';
+          // Case 2 → retailer IS in CS
+          if (useSSForCS) {
+              // Workaround: force to use Savings SS %
+              csCombo = (anchor.ss - 3.5) + savings.ss;
+          } else {
+              // Strict rule: use Savings CS %
+              csCombo = (anchor.ss - 3.5) + savings.cs;
+          }
       }
-    }
-</script>
 
+
+      combos.push({
+        anchor: anchor.name,
+        savings: savings.name,
+        ssCombo: ssCombo,
+        csCombo: csCombo
+      });
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${anchor.name}</td>
+        <td>${savings.name}</td>
+        <td>${ssCombo.toFixed(2)}%</td>
+        <td>${csCombo.toFixed(2)}%</td>
+      `;
+      comboResults.appendChild(row);
+    });
+  });
+
+  if (combos.length > 0) {
+    summarySection.style.display = 'block';
+
+    const ssHighest = combos.reduce((max, combo) => combo.ssCombo > max.ssCombo ? combo : max, combos[0]);
+    const ssLowest = combos.reduce((min, combo) => combo.ssCombo < min.ssCombo ? combo : min, combos[0]);
+
+    const csHighest = combos.reduce((max, combo) => combo.csCombo > max.csCombo ? combo : max, combos[0]);
+    const csLowest = combos.reduce((min, combo) => combo.csCombo < min.csCombo ? combo : min, combos[0]);
+
+    const suggestedSSCombo = Math.floor(ssLowest.ssCombo);
+    const suggestedCSCombo = Math.floor(csLowest.csCombo);
+
+    document.getElementById('ssHighest').innerText = `${ssHighest.ssCombo.toFixed(2)}% \n${ssHighest.anchor} + ${ssHighest.savings}`;
+    document.getElementById('ssLowest').innerText = `${ssLowest.ssCombo.toFixed(2)}% \n${ssLowest.anchor} + ${ssLowest.savings}`;
+    document.getElementById('ssCombo').innerText = `${suggestedSSCombo}%`;
+
+    document.getElementById('csHighest').innerText = `${csHighest.csCombo.toFixed(2)}% \n${csHighest.anchor} + ${csHighest.savings}`;
+    document.getElementById('csLowest').innerText = `${csLowest.csCombo.toFixed(2)}% \n${csLowest.anchor} + ${csLowest.savings}`;
+    document.getElementById('csCombo').innerText = `${suggestedCSCombo}%`;
+
+  } else {
+    summarySection.style.display = 'none';
+  }
+}
+</script>
 
 </body>
 </html>
