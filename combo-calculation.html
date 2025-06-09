@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Card Combo Generator</title>
@@ -9,591 +10,279 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
-<body style="padding: 20px;">
 
-<!-- Selection Row -->
-<div style="display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 15px; align-items: flex-end;">
+<body style="padding: 20px; background-color: #1c1c1c;">
 
-    <!-- Anchors Column -->
-    <div style="flex: 1; min-width: 300px;">
-      <h2 style="font-size: 1.2em; margin-bottom: 8px;">Select up to 4 Anchors</h2>
-      <select id="anchorSelect" multiple></select>
+  <div style="max-width: 1200px; margin: 30px auto; padding: 20px;">
+    <div class="result-container" style="border: 1px solid grey; padding: 20px; background-color: white;">
+      <!-- Selection Row -->
+      <div style="display: block; margin-bottom: 15px;">
+
+        <!-- Anchors Column -->
+        <div style="">
+          <h2 style="font-size: 1.2em; margin-bottom: 8px;">Select Anchors <em>(up to 4)</em> </h2>
+          <select id="anchorSelect" multiple></select>
+        </div>
+
+        <!-- Savings Column -->
+        <div style="margin-top: 10px;">
+          <h2 style="font-size: 1.2em; margin-bottom: 8px;">Select Savings <em>(up to 4)</em></h2>
+          <select id="savingsSelect" multiple></select>
+        </div>
+
+      </div>
+
+      <!-- CS Calculation Mode Checkbox -->
+      <div style="margin-bottom: 25px;">
+        <input type="checkbox" id="useSSForCS" checked>
+        <label for="useSSForCS">Use Savings SS % for CS Combo (Kristina's workaround)</label>
+      </div>
+
+      <!-- 🚀 EXPANDABLE GAP FACTOR ALERT -->
+      <div
+        style="background-color: #f9f9f9; border-left: 5px solid #2196F3; padding: 12px 16px; margin-bottom: 15px; font-size: 0.9em; color: #333;">
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <strong>Gap Factor Explanation</strong>
+          <button onclick="toggleGapFactorExplanation()"
+            style="font-size: 0.8em; padding: 4px 8px; cursor: pointer;">Show
+            More ▼</button>
+        </div>
+
+        <div id="gapFactorExplanationContent" style="display: none; margin-top: 10px;">
+          <p style="margin-bottom: 8px;">
+            <strong>What is Gap Factor?</strong><br>
+            Gap Factor controls how much margin (buffer) is required between the Combo % and the combined % of
+            individual
+            cards — to ensure the Combo % looks better to members.<br><br>
+            - <strong>Gap Factor (SS) %</strong> → applies to SuperSaver combos.<br>
+            - <strong>Gap Factor (CS) %</strong> → applies to ClubSaver combos.<br><br>
+            A larger Gap Factor forces the individual cards to adjust lower — to make sure the Combo % clearly
+            "wins."<br>
+            Example: If Combo CS % = 10% and Gap Factor = 5%, then Individual Card Max % must be LESS than 9.5%.
+          </p>
+        </div>
+
+      </div>
+
+
+
+      <!-- GapFactor for SuperSaver -->
+      <div style="margin-bottom: 10px;">
+        <label for="gapFactorInput"><strong>Gap Factor (SS) %</strong>:</label>
+        <input type="number" id="gapFactorInput" value="10" min="0" max="100" step="0.1"
+          style="width: 80px; margin-left: 5px;">
+      </div>
+
+      <!-- GapFactor for ClubSaver -->
+      <div style="margin-bottom: 15px;">
+        <label for="gapFactorCSInput"><strong>Gap Factor (CS) %</strong>:</label>
+        <input type="number" id="gapFactorCSInput" value="5" min="0" max="100" step="0.1"
+          style="width: 80px; margin-left: 5px;">
+      </div>
+
+
+      <!-- Generate Combos Button -->
+      <div style="margin-bottom: 15px;">
+        <button onclick="generateCombos()" class="btn btn-primary">
+          Generate Combos
+        </button>
+      </div>
     </div>
 
-    <!-- Savings Column -->
-    <div style="flex: 1; min-width: 300px;">
-      <h2 style="font-size: 1.2em; margin-bottom: 8px;">Select up to 4 Savings</h2>
-      <select id="savingsSelect" multiple></select>
-    </div>
-
-</div>
-
-<!-- CS Calculation Mode Checkbox -->
-<div style="margin-bottom: 25px;">
-  <input type="checkbox" id="useSSForCS" checked>
-  <label for="useSSForCS">Use Savings SS % for CS Combo (Kristina's workaround)</label>
-</div>
-
-<!-- 🚀 EXPANDABLE GAP FACTOR ALERT -->
-<div style="background-color: #f9f9f9; border-left: 5px solid #2196F3; padding: 12px 16px; margin-bottom: 15px; font-size: 0.9em; color: #333;">
-
-  <div style="display: flex; justify-content: space-between; align-items: center;">
-    <strong>Gap Factor Explanation</strong>
-    <button onclick="toggleGapFactorExplanation()" style="font-size: 0.8em; padding: 4px 8px; cursor: pointer;">Show More ▼</button>
-  </div>
-
-  <div id="gapFactorExplanationContent" style="display: none; margin-top: 10px;">
-    <p style="margin-bottom: 8px;">
-      <strong>What is Gap Factor?</strong><br>
-      Gap Factor controls how much margin (buffer) is required between the Combo % and the combined % of individual cards — to ensure the Combo % looks better to members.<br><br>
-      - <strong>Gap Factor (SS) %</strong> → applies to SuperSaver combos.<br>
-      - <strong>Gap Factor (CS) %</strong> → applies to ClubSaver combos.<br><br>
-      A larger Gap Factor forces the individual cards to adjust lower — to make sure the Combo % clearly "wins."<br>
-      Example: If Combo CS % = 10% and Gap Factor = 5%, then Individual Card Max % must be LESS than 9.5%.
-    </p>
-  </div>
-
-</div>
 
 
+    <div class="result-container"
+      style="background-color: #1c1c1c; color: #fff;">
 
-<!-- GapFactor for SuperSaver -->
-<div style="margin-bottom: 10px;">
-  <label for="gapFactorInput"><strong>Gap Factor (SS) %</strong>:</label>
-  <input type="number" id="gapFactorInput" value="10" min="0" max="100" step="0.1" style="width: 80px; margin-left: 5px;">
-</div>
-
-<!-- GapFactor for ClubSaver -->
-<div style="margin-bottom: 15px;">
-  <label for="gapFactorCSInput"><strong>Gap Factor (CS) %</strong>:</label>
-  <input type="number" id="gapFactorCSInput" value="5" min="0" max="100" step="0.1" style="width: 80px; margin-left: 5px;">
-</div>
-
-
-<!-- Generate Combos Button -->
-<div style="margin-bottom: 15px;">
-  <button onclick="generateCombos()" class="btn btn-primary">
-    Generate Combos
-  </button>
-</div>
-
-<!-- Combo Results -->
-<h2>Combo Results</h2>
-
-<!-- Alert -->
-<div id="comboAlert" class="alert alert-info" role="alert" style="margin-bottom: 15px;">
-  Choose Anchor and Savings cards to calculate combo.
-</div>
-
-<!-- Combo Table -->
-<table border="1" cellpadding="5" cellspacing="0" style="margin-bottom: 40px;">
-  <thead>
-    <tr>
-      <th>Anchor</th>
-      <th>Savings</th>
-      <th>SS Combo %</th>
-      <th>CS Combo %</th>
-    </tr>
-  </thead>
-  <tbody id="comboResults">
-  </tbody>
-</table>
-
-<!-- Summary Section -->
-<div id="summarySection" style="display: none; margin-top: 40px;">
-  <h2>Summary</h2>
-
-  <!-- First row: SS Summary -->
-  <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
-    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-      <h3>SS HIGHEST %</h3>
-      <div id="ssHighest" style="font-size: 1.5em; font-weight: bold; color: #2e7d32;"></div>
-    </div>
-
-    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-      <h3>SS LOWEST %</h3>
-      <div id="ssLowest" style="font-size: 1.5em; font-weight: bold; color: #c62828;"></div>
-    </div>
-
-    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-      <h3>SS COMBO %</h3>
-      <div id="ssCombo" style="font-size: 2em; font-weight: bold; color: #1565c0;"></div>
-    </div>
-  </div>
-
-  <!-- Second row: CS Summary -->
-  <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-      <h3>CS HIGHEST %</h3>
-      <div id="csHighest" style="font-size: 1.5em; font-weight: bold; color: #2e7d32;"></div>
-    </div>
-
-    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-      <h3>CS LOWEST %</h3>
-      <div id="csLowest" style="font-size: 1.5em; font-weight: bold; color: #c62828;"></div>
-    </div>
-
-    <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-      <h3>CS COMBO %</h3>
-      <div id="csCombo" style="font-size: 2em; font-weight: bold; color: #1565c0;"></div>
-    </div>
-  </div>
-</div>
-
-<!-- 🚀 PART 6E — CLEANED UP ADJUSTMENT SECTION -->
-
-<!-- Adjustment Section Title -->
-<div id="adjustmentSection" style="display: none; margin-top: 40px;">
-
-  <h3 style="margin-bottom: 10px;">Card % Adjustments (GapFactor)</h3>
-<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; margin-bottom: 30px;">
-  <thead style="background-color: #f8f8f8;">
-    <tr style="border-bottom: 1px solid #ddd;">
-      <th style="text-align: left;">Type</th>
-      <th style="text-align: left;">Retailer</th>
-      <th>SS %</th>
-      <th>CS %</th>
-      <th>SS ADJ %</th>
-      <th>CS ADJ %</th>
-    </tr>
-  </thead>
-  <tbody id="combinedAdjustments">
-  </tbody>
-</table>
-
-
-  <!-- Adjustment Chart -->
-  <div id="adjustmentChartSection" style="display: none;">
-
-   <!-- 🚀 EXPANDABLE ADJUSTMENT CHART ALERT -->
-<div style="background-color: #f9f9f9; border-left: 5px solid #2196F3; padding: 12px 16px; margin-bottom: 15px; font-size: 0.9em; color: #333;">
-
-  <div style="display: flex; justify-content: space-between; align-items: center;">
-    <strong>Adjustment Chart Explanation</strong>
-    <button onclick="toggleChartExplanation()" style="font-size: 0.8em; padding: 4px 8px; cursor: pointer;">Show More ▼</button>
-  </div>
-
-  <div id="chartExplanationContent" style="display: none; margin-top: 10px;">
-    <p style="margin-bottom: 8px;">
-      <strong>How "Individual Card Max %" is calculated:</strong><br>
-      This shows the best % a member could get by buying cards individually (instead of as a combo).<br>
-      Formula = Highest Anchor % + Highest Savings % (after adjustments).<br>
-      <u>SuperSaver:</u> Anchor SS ADJ % + Savings SS ADJ %<br>
-      <u>ClubSaver:</u> Anchor CS ADJ % + Savings %:<br>
-      &nbsp; - If Savings is not CS-available → use SS ADJ %<br>
-      &nbsp; - If Savings is CS-available → use CS ADJ %
-    </p>
-  </div>
-
-</div>
-
+      <div class="result-container"
+      style="padding: 20px; margin: 60px 0px; background-color: #272727;">
     
-    <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%; max-width: 600px;">
-      <thead style="background-color: #f1f1f1;">
-        <tr>
-          <th style="text-align: left;">Membership</th>
-          <th>Card Combo %</th>
-          <th>Individual Card Max %</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>SuperSaver</td>
-          <td id="chartSSCombo"></td>
-          <td id="chartSSIndividual"></td>
-        </tr>
-        <tr>
-          <td>ClubSaver</td>
-          <td id="chartCSCombo"></td>
-          <td id="chartCSIndividual"></td>
-        </tr>
-      </tbody>
-    </table>
+        <!-- Combo Results -->
+        <h2 style="font-size: 1.4em; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Combo Results
+        </h2>
+
+        <!-- Alert -->
+        <div id="comboAlert" class="alert alert-info" role="alert" style="margin-bottom: 15px; margin-top: 15px;">
+          Choose Anchor and Savings cards to calculate combo.
+        </div>
+
+        <!-- Combo Table -->
+        <table border="1" cellpadding="5" cellspacing="0"
+          style="margin-bottom: 40px; width: 100%; display: none; margin-top: 30px; color: #1c1c1c; background-color: #fff;" class="comboResultTable">
+          <thead style="background-color: #f1f1f1;">
+            <tr style="">
+              <th>Anchor</th>
+              <th>Savings</th>
+              <th>SS Combo %</th>
+              <th>CS Combo %</th>
+            </tr>
+          </thead>
+          <tbody id="comboResults">
+          </tbody>
+        </table>
+
+      </div>
+
+      
+
+      <!-- Summary Section -->
+      <div id="summarySection" style="display: none; margin-top: 40px;">
+
+        <div class="summary-card-cont" style="padding: 20px; margin: 60px 0px; background-color: #272727;">
+          <h2 style="font-size: 1.4em; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Summary</h2>
+
+          <div
+            style="background: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 30px; margin-top: 30px;">
+  
+            <!-- First row: SS Summary -->
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 30px;">
+              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf7eb;">
+                <h3 style="font-size: 18px; color: #1c1c1c;">SS HIGHEST %</h3>
+                <div id="ssHighest" style="font-size: 16px; font-weight: bold; color: #2e7d32;"></div>
+              </div>
+  
+              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #f7eaea;">
+                <h3 style="font-size: 18px; color: #1c1c1c;">SS LOWEST %</h3>
+                <div id="ssLowest" style="font-size: 16px; font-weight: bold; color: #c62828;"></div>
+              </div>
+  
+              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf0f7;">
+                <h3 style="font-size: 18px; color:#1c1c1c;">SS COMBO %</h3>
+                <div id="ssCombo" style="font-size: 25px; font-weight: bold; color: #1565c0;"></div>
+              </div>
+            </div>
+  
+            <!-- Second row: CS Summary -->
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; ">
+              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf7eb;">
+                <h3 style="font-size: 18px; color: #1c1c1c;">CS HIGHEST %</h3>
+                <div id="csHighest" style="font-size: 16px; font-weight: bold; color: #2e7d32;"></div>
+              </div>
+  
+              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #f7eaea;">
+                <h3 style="font-size: 18px; color: #1c1c1c;">CS LOWEST %</h3>
+                <div id="csLowest" style="font-size: 16px; font-weight: bold; color: #c62828;"></div>
+              </div>
+  
+              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf0f7;">
+                <h3 style="font-size: 18px; color:#1c1c1c;">CS COMBO %</h3>
+                <div id="csCombo" style="font-size: 25px; font-weight: bold; color: #1565c0;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <!-- 🚀 PART 6E — CLEANED UP ADJUSTMENT SECTION -->
+
+        <!-- Adjustment Section Title -->
+        <div id="adjustmentSection" style="display: none; margin-top: 40px;">
+        <div class="adjustment-card-cont" style="padding: 20px; margin: 20px 0px; background-color: #272727;">
+          <h2 style="font-size: 1.4em; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Card %
+            Adjustments (GapFactor)</h2>
+
+          <table border="1" cellpadding="8" cellspacing="0"
+            style="border-collapse: collapse; width: 100%; margin: 30px 0px; overflow-x: auto; color: #1c1c1c; background-color: #fff;">
+            <thead style="background-color: #f8f8f8;">
+              <tr style="border-bottom: 1px solid #ddd;">
+                <th style="text-align: left;">Type</th>
+                <th style="text-align: left;">Retailer</th>
+                <th>SS %</th>
+                <th>CS %</th>
+                <th>SS ADJ %</th>
+                <th>CS ADJ %</th>
+              </tr>
+            </thead>
+            <tbody id="combinedAdjustments">
+            </tbody>
+          </table>
+        </div>
+          
+
+
+          <!-- Adjustment Chart -->
+          <div id="adjustmentChartSection" style="display: none;">
+
+            <div class="summary-card-cont" style="padding: 20px; margin: 60px 0px; background-color: #272727;">
+              <!-- 🚀 EXPANDABLE ADJUSTMENT CHART ALERT -->
+            <div
+            style="background-color: #f9f9f9; border-left: 5px solid #2196F3; padding: 12px 16px; margin-bottom: 15px; font-size: 0.9em; color: #333;">
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong>Adjustment Chart Explanation</strong>
+              <button onclick="toggleChartExplanation()"
+                style="font-size: 0.8em; padding: 4px 8px; cursor: pointer;">Show
+                More ▼</button>
+            </div>
+
+            <div id="chartExplanationContent" style="display: none; margin-top: 10px;">
+              <p style="margin-bottom: 8px;">
+                <strong>How "Individual Card Max %" is calculated:</strong><br>
+                This shows the best % a member could get by buying cards individually (instead of as a combo).<br>
+                Formula = Highest Anchor % + Highest Savings % (after adjustments).<br>
+                <u>SuperSaver:</u> Anchor SS ADJ % + Savings SS ADJ %<br>
+                <u>ClubSaver:</u> Anchor CS ADJ % + Savings %:<br>
+                &nbsp; - If Savings is not CS-available → use SS ADJ %<br>
+                &nbsp; - If Savings is CS-available → use CS ADJ %
+              </p>
+            </div>
+
+          </div>
+
+
+          <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%; color: #1c1c1c; background-color: #fff; padding: 15px;">
+            <thead style="background-color: #f1f1f1;">
+              <tr>
+                <th style="text-align: left;">Membership</th>
+                <th>Card Combo %</th>
+                <th>Individual Card Max %</th>
+                <th>Individual Top Value Retailers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid #ddd;">
+                <td>SuperSaver</td>
+                <td id="chartSSCombo"></td>
+                <td id="chartSSIndividual"></td>
+                <td id="chartSSTopRetailers"></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #ddd;">
+                <td>ClubSaver</td>
+                <td id="chartCSCombo"></td>
+                <td id="chartCSIndividual"></td>
+                <td id="chartCSTopRetailers"></td>
+              </tr>
+            </tbody>
+          </table>
+            </div>
+
+            
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+    </div>
 
   </div>
 
-</div>
 
 
 
-<!-- Choices.js JS -->
-<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
-<!-- START JS -->
-<script>
-const retailers = [
-  { name: 'Under Armour', ss: 13.0, cs: 9.5, availableCS: true, isSuper7: false },
-  { name: 'Nike', ss: 12.0, cs: 8.5, availableCS: true, isSuper7: false },
-  { name: 'Athleta', ss: 11.5, cs: 8.0, availableCS: true, isSuper7: false },
-  { name: 'Adidas', ss: 11.5, cs: 8.0, availableCS: true, isSuper7: false },
-  { name: 'Target', ss: 5.2, cs: 0.0, availableCS: false, isSuper7: true },
-  { name: 'Amazon', ss: 2.7, cs: 0.0, availableCS: false, isSuper7: true },
-  { name: 'Dick\'s Sporting Goods', ss: 3.5, cs: 0.0, availableCS: false, isSuper7: false },
-  { name: 'Williams-Sonoma', ss: 9.0, cs: 5.5, availableCS: true, isSuper7: false },
-  { name: 'Pottery Barn', ss: 9.0, cs: 5.5, availableCS: true, isSuper7: false },
-  { name: 'West Elm', ss: 7.5, cs: 4.5, availableCS: true, isSuper7: false },
-  { name: 'Home Depot', ss: 5.2, cs: 0.0, availableCS: false, isSuper7: true },
-  { name: 'Lowe’s', ss: 6.1, cs: 0.0, availableCS: false, isSuper7: true },
-  { name: 'Ace Hardware', ss: 6.7, cs: 3.2, availableCS: true, isSuper7: false }
-];
+  <!-- Choices.js JS -->
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
-// initialize choice.js
-const anchorChoices = new Choices('#anchorSelect', {
-  removeItemButton: true,
-  maxItemCount: 4,
-  placeholderValue: 'Select up to 4 Anchors'
-});
-
-const savingsChoices = new Choices('#savingsSelect', {
-  removeItemButton: true,
-  maxItemCount: 4,
-  placeholderValue: 'Select up to 4 Savings'
-});
-
-retailers.forEach(retailer => {
-  anchorChoices.setChoices([{ value: retailer.name, label: retailer.name }], 'value', 'label', false);
-  savingsChoices.setChoices([{ value: retailer.name, label: retailer.name }], 'value', 'label', false);
-});
-
-function updateDropdowns() {
-  const selectedAnchors = anchorChoices.getValue(true);
-  const selectedSavings = savingsChoices.getValue(true);
-
-  const availableForAnchors = retailers
-    .filter(r => !selectedSavings.includes(r.name))
-    .map(r => ({ value: r.name, label: r.name }));
-
-  const availableForSavings = retailers
-    .filter(r => !selectedAnchors.includes(r.name))
-    .map(r => ({ value: r.name, label: r.name }));
-
-  anchorChoices.clearChoices();
-  anchorChoices.setChoices(availableForAnchors, 'value', 'label', true);
-  selectedAnchors.forEach(value => {
-    anchorChoices.setChoiceByValue(value);
-  });
-
-  savingsChoices.clearChoices();
-  savingsChoices.setChoices(availableForSavings, 'value', 'label', true);
-  selectedSavings.forEach(value => {
-    savingsChoices.setChoiceByValue(value);
-  });
-}
-
-anchorChoices.passedElement.element.addEventListener('change', updateDropdowns);
-savingsChoices.passedElement.element.addEventListener('change', updateDropdowns);
-
-// generate combos
-function generateCombos() {
-  const selectedAnchors = anchorChoices.getValue(true);
-  const selectedSavings = savingsChoices.getValue(true);
-
-  const comboResults = document.getElementById('comboResults');
-  comboResults.innerHTML = '';
-
-  const summarySection = document.getElementById('summarySection');
-  document.getElementById('comboAlert').style.display = 'none';
-
-  const combos = [];
-
-  selectedAnchors.forEach(anchorName => {
-    const anchor = retailers.find(r => r.name === anchorName);
-
-    selectedSavings.forEach(savingsName => {
-      const savings = retailers.find(r => r.name === savingsName);
-
-      const ssCombo = anchor.ss + savings.ss;
-
-      let csCombo = 0;
-      const useSSForCS = document.getElementById('useSSForCS').checked;
-
-      if (!savings.availableCS) {
-          csCombo = (anchor.ss - 3.5) + savings.ss;
-      } else {
-          if (useSSForCS) {
-              csCombo = (anchor.ss - 3.5) + savings.ss;
-          } else {
-              csCombo = (anchor.ss - 3.5) + savings.cs;
-          }
-      }
-
-      combos.push({
-        anchor: anchor.name,
-        savings: savings.name,
-        ssCombo: ssCombo,
-        csCombo: csCombo
-      });
-
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${anchor.name}</td>
-        <td>${savings.name}</td>
-        <td>${ssCombo.toFixed(2)}%</td>
-        <td>${csCombo.toFixed(2)}%</td>
-      `;
-      comboResults.appendChild(row);
-    });
-  });
-
-  if (combos.length > 0) {
-    summarySection.style.display = 'block';
-
-    const ssHighest = combos.reduce((max, combo) => combo.ssCombo > max.ssCombo ? combo : max, combos[0]);
-    const ssLowest = combos.reduce((min, combo) => combo.ssCombo < min.ssCombo ? combo : min, combos[0]);
-
-    const csHighest = combos.reduce((max, combo) => combo.csCombo > max.csCombo ? combo : max, combos[0]);
-    const csLowest = combos.reduce((min, combo) => combo.csCombo < min.csCombo ? combo : min, combos[0]);
-
-    const suggestedSSCombo = Math.floor(ssLowest.ssCombo);
-    const suggestedCSCombo = Math.floor(csLowest.csCombo);
-
-    // Read GapFactor for SS
-    const gapFactorInput = document.getElementById('gapFactorInput').value;
-    const gapFactor = parseFloat(gapFactorInput) / 100;
-
-    // Read GapFactor for CS
-    const gapFactorCSInput = document.getElementById('gapFactorCSInput').value;
-    const gapFactorCS = parseFloat(gapFactorCSInput) / 100;
-
-    // 🚀 Pass BOTH GapFactors to runGapFactorAdjustment!
-    runGapFactorAdjustment(suggestedSSCombo, suggestedCSCombo, gapFactor, gapFactorCS);
-
-
-    document.getElementById('ssHighest').innerText = `${ssHighest.ssCombo.toFixed(2)}% \n${ssHighest.anchor} + ${ssHighest.savings}`;
-    document.getElementById('ssLowest').innerText = `${ssLowest.ssCombo.toFixed(2)}% \n${ssLowest.anchor} + ${ssLowest.savings}`;
-    document.getElementById('ssCombo').innerText = `${suggestedSSCombo}%`;
-
-    document.getElementById('csHighest').innerText = `${csHighest.csCombo.toFixed(2)}% \n${csHighest.anchor} + ${csHighest.savings}`;
-    document.getElementById('csLowest').innerText = `${csLowest.csCombo.toFixed(2)}% \n${csLowest.anchor} + ${csLowest.savings}`;
-    document.getElementById('csCombo').innerText = `${suggestedCSCombo}%`;
-
-  } else {
-    summarySection.style.display = 'none';
-    document.getElementById('adjustmentSection').style.display = 'none'; // hide adjustments too if empty
-  }
-}
-
-// Gap factor adjustment
-function runGapFactorAdjustment(SSCombo, CSCombo, gapFactor, gapFactorCS) {
-  console.log(`Running GapFactor Adjustment with SS Combo % = ${SSCombo}, CS Combo % = ${CSCombo}, GapFactor = ${gapFactor}`);
-
-  // ✅ Get current selected anchors and savings:
-  const selectedAnchors = anchorChoices.getValue(true);
-  const selectedSavings = savingsChoices.getValue(true);
-
-  const anchors = retailers.filter(r => selectedAnchors.includes(r.name));
-  const savings = retailers.filter(r => selectedSavings.includes(r.name));
-
-  if (anchors.length === 0 || savings.length === 0) return;
-
-  // Initialize results
-  let anchorResults = {};
-  let savingsResults = {};
-
-  anchors.forEach(a => {
-    anchorResults[a.name] = { SSADJ: a.ss, CSADJ: a.cs };
-  });
-  savings.forEach(s => {
-    savingsResults[s.name] = { SSADJ: s.ss, CSADJ: s.cs };
-  });
-
-  // Process all pairs
-  anchors.forEach(anchor => {
-    savings.forEach(saving => {
-      // === SS Adjustment ===
-      let currentSumSS = anchor.ss + saving.ss;
-      let gapSS = currentSumSS * gapFactor;
-      let targetMaxSS = SSCombo - gapSS;
-      let adjustmentNeededSS = currentSumSS - targetMaxSS;
-
-      let anchorSSAdj = anchor.ss;
-      let savingSSAdj = saving.ss;
-
-      if (adjustmentNeededSS > 0) {
-        if (anchor.isSuper7 && saving.isSuper7) {
-          // BOTH Super7 — skip adjustment
-        } else if (anchor.isSuper7) {
-          // Adjust savings 100%
-          savingSSAdj = saving.ss - adjustmentNeededSS;
-        } else if (saving.isSuper7) {
-          // Adjust anchor 100%
-          anchorSSAdj = anchor.ss - adjustmentNeededSS;
-        } else {
-          // Split adjustment
-          let perCardAdj = adjustmentNeededSS / 2;
-          anchorSSAdj = anchor.ss - perCardAdj;
-          savingSSAdj = saving.ss - perCardAdj;
-        }
-
-        // Prevent negative
-        anchorSSAdj = Math.max(0, anchorSSAdj);
-        savingSSAdj = Math.max(0, savingSSAdj);
-      }
-
-      // ✅ Save results — DO NOT adjust Super7!
-      if (!anchor.isSuper7 && anchorSSAdj < anchorResults[anchor.name].SSADJ) {
-        anchorResults[anchor.name].SSADJ = anchorSSAdj;
-      }
-      if (!saving.isSuper7 && savingSSAdj < savingsResults[saving.name].SSADJ) {
-        savingsResults[saving.name].SSADJ = savingSSAdj;
-      }
-
-      // === CS Adjustment ===
-      if (anchor.availableCS && saving.availableCS) {
-          // NORMAL CASE → Both cards are CS available → adjust BOTH Anchor and Savings CS ADJ %
-
-          let currentSumCS = anchorResults[anchor.name].CSADJ + savingsResults[saving.name].CSADJ;
-          let gapCS = currentSumCS * gapFactorCS;
-          let targetMaxCS = CSCombo - gapCS;
-          let adjustmentNeededCS = currentSumCS - targetMaxCS;
-
-          let anchorCSAdj = anchorResults[anchor.name].CSADJ;
-          let savingCSAdj = savingsResults[saving.name].CSADJ;
-
-          if (adjustmentNeededCS > 0) {
-              let perCardAdjCS = adjustmentNeededCS / 2;
-              anchorCSAdj -= perCardAdjCS;
-              savingCSAdj -= perCardAdjCS;
-
-              // Clamp to >= 0
-              anchorCSAdj = Math.max(0, anchorCSAdj);
-              savingCSAdj = Math.max(0, savingCSAdj);
-          }
-
-          // Save results
-          anchorResults[anchor.name].CSADJ = anchorCSAdj;
-          savingsResults[saving.name].CSADJ = savingCSAdj;
-      }
-      else if (anchor.availableCS && !saving.availableCS) {
-          // SPECIAL CASE → Savings is Super7 or SS-only → ONLY adjust Anchor CS ADJ %
-
-          let savingsEffectiveSS = savingsResults[saving.name].SSADJ;
-
-          // Target we must beat:
-          let targetMaxCS = CSCombo - savingsEffectiveSS - (CSCombo * gapFactorCS);
-
-          let anchorCSAdj = anchorResults[anchor.name].CSADJ;
-
-          // Adjustment loop — lower anchorCSAdj if needed:
-          if (anchorCSAdj > targetMaxCS) {
-              let adjustmentStep = 0.1; // You can tune this for finer control
-
-              anchorCSAdj = targetMaxCS; // Directly set to targetMaxCS (safe + fast)
-
-              // Clamp to >= 0
-              anchorCSAdj = Math.max(0, anchorCSAdj);
-
-              // Save result
-              anchorResults[anchor.name].CSADJ = anchorCSAdj;
-          }
-
-          // DO NOT adjust Savings CS ADJ % — leave as N/A
-      }
-
-    });
-  });
-
-  const combinedTable = document.getElementById('combinedAdjustments');
-combinedTable.innerHTML = '';
-
-// Fill anchors first:
-anchors.forEach(a => {
-  combinedTable.innerHTML += `
-    <tr style="border-bottom: 1px solid #ddd;">
-      <td>Anchor</td>
-      <td>${a.name}</td>
-      <td>${a.ss.toFixed(2)}%</td>
-      <td>${a.availableCS ? a.cs.toFixed(2) + '%' : 'N/A'}</td>
-      <td>${anchorResults[a.name].SSADJ.toFixed(2)}%</td>
-      <td>${a.availableCS ? anchorResults[a.name].CSADJ.toFixed(2) + '%' : 'N/A'}</td>
-    </tr>
-  `;
-});
-
-// Then fill savings:
-savings.forEach(s => {
-  combinedTable.innerHTML += `
-    <tr style="border-bottom: 1px solid #ddd;">
-      <td>Savings</td>
-      <td>${s.name}</td>
-      <td>${s.ss.toFixed(2)}%</td>
-      <td>${s.availableCS ? s.cs.toFixed(2) + '%' : 'N/A'}</td>
-      <td>${savingsResults[s.name].SSADJ.toFixed(2)}%</td>
-      <td>${s.availableCS ? savingsResults[s.name].CSADJ.toFixed(2) + '%' : 'N/A'}</td>
-    </tr>
-  `;
-});
-
-
-  // === Adjustment Chart calculation ===
-
-  // 1️⃣ Get highest Anchor CS ADJ %
-  let highestAnchorCSADJ = Math.max(...anchors.map(a => anchorResults[a.name].CSADJ));
-
-  // 2️⃣ Get highest Savings "effective" %:
-  let highestSavingsEffectiveCS = Math.max(...savings.map(s => {
-      return s.availableCS
-          ? savingsResults[s.name].CSADJ
-          : savingsResults[s.name].SSADJ;
-  }));
-
-  // 3️⃣ Compute Individual Card Max %:
-  let individualCSMax = highestAnchorCSADJ + highestSavingsEffectiveCS;
-
-  // === SuperSaver chart (you already had this) ===
-  let highestAnchorSSADJ = Math.max(...anchors.map(a => anchorResults[a.name].SSADJ));
-  let highestSavingsSSADJ = Math.max(...savings.map(s => savingsResults[s.name].SSADJ));
-  let individualSSMax = highestAnchorSSADJ + highestSavingsSSADJ;
-
-  // === Populate Adjustment Chart:
-
-  // SuperSaver:
-  document.getElementById('chartSSCombo').innerText = `${SSCombo.toFixed(2)}%`;
-  document.getElementById('chartSSIndividual').innerText = `${individualSSMax.toFixed(2)}%`;
-
-  // ClubSaver:
-  document.getElementById('chartCSCombo').innerText = `${CSCombo.toFixed(2)}%`;
-  document.getElementById('chartCSIndividual').innerText = `${individualCSMax.toFixed(2)}%`;
-
-  // === Show the chart:
-  document.getElementById('adjustmentSection').style.display = 'block';
-  document.getElementById('adjustmentChartSection').style.display = 'block';
-
-}
-
-
-function toggleGapFactorExplanation() {
-  const content = document.getElementById('gapFactorExplanationContent');
-  const button = event.target;
-
-  if (content.style.display === 'none') {
-    content.style.display = 'block';
-    button.textContent = 'Show Less ▲';
-  } else {
-    content.style.display = 'none';
-    button.textContent = 'Show More ▼';
-  }
-}
-
-function toggleChartExplanation() {
-  const content = document.getElementById('chartExplanationContent');
-  const button = event.target;
-
-  if (content.style.display === 'none') {
-    content.style.display = 'block';
-    button.textContent = 'Show Less ▲';
-  } else {
-    content.style.display = 'none';
-    button.textContent = 'Show More ▼';
-  }
-}
-
-
-
-
-
-</script>
+  <!-- START JS -->
+  <script src="./combo-script.js"></script>
 
 </body>
-</html>
 
+</html>
