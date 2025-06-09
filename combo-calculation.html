@@ -92,12 +92,10 @@
 
 
 
-    <div class="result-container"
-      style="background-color: #1c1c1c; color: #fff;">
+    <div class="result-container" style="background-color: #1c1c1c; color: #fff;">
 
-      <div class="result-container"
-      style="padding: 20px; margin: 60px 0px; background-color: #272727;">
-    
+      <div class="result-container" style="padding: 20px; margin: 60px 0px; background-color: #272727;">
+
         <!-- Combo Results -->
         <h2 style="font-size: 1.4em; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Combo Results
         </h2>
@@ -106,10 +104,69 @@
         <div id="comboAlert" class="alert alert-info" role="alert" style="margin-bottom: 15px; margin-top: 15px;">
           Choose Anchor and Savings cards to calculate combo.
         </div>
+        
+        <!-- How SS Combo % and CS Combo % are calculated -->
+        <div
+          style="background-color: #f9f9f9; border-left: 5px solid #1565c0; padding: 12px 16px; margin-bottom: 15px; margin-top: 30px; font-size: 0.9em; color: #333;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong>How SS Combo % and CS Combo % are calculated</strong>
+            <button onclick="toggleComboExplanation()" style="font-size: 0.8em; padding: 4px 8px; cursor: pointer;">Show
+              More ▼</button>
+          </div>
+
+          <div id="ssComboContent" style="display: none; margin-top: 10px;">
+
+            <p style="margin-bottom: 10px;">
+              These values are used to compare each card pairing’s combined discount potential in both SuperSaver and
+              ClubSaver modes.
+            </p>
+
+            <strong>🔵 SuperSaver (SS) Combo %</strong>
+            <ul style="margin: 8px 0 16px 16px;">
+              <li>
+                Formula: <code>SS Combo % = Anchor SS % + Savings SS %</code>
+              </li>
+              <li>
+                Example: Anchor SS = 13.0%, Savings SS = 9.0% → SS Combo % = 13.0 + 9.0 = <strong>22.0%</strong>
+              </li>
+            </ul>
+
+            <strong>🟢 ClubSaver (CS) Combo %</strong>
+            <ul style="margin: 8px 0 16px 16px;">
+              <li>
+                Formula: <code>CS Combo % = (Anchor SS % − 3.5) + Savings CS %</code> (if CS is available)
+              </li>
+              <li>
+                If Savings card is <strong>not CS-eligible</strong>: use <code>Savings SS %</code> instead
+              </li>
+              <li>
+                If <strong>"Use Savings SS % for CS Combo (Kristina's workaround)"</strong> is <strong>checked</strong>:
+                always use <code>Savings SS %</code> even if CS % is available
+              </li>
+              <li>
+                Example 1 (Default logic):
+                <br>
+                Anchor SS = 13.0% → 13.0 − 3.5 = 9.5<br>
+                Savings CS = 5.5<br>
+                Result: CS Combo % = 9.5 + 5.5 = <strong>15.0%</strong>
+              </li>
+              <li>
+                Example 2 (Checkbox enabled):
+                <br>
+                Anchor SS = 13.0% → 13.0 − 3.5 = 9.5<br>
+                Savings SS = 9.0<br>
+                Result: CS Combo % = 9.5 + 9.0 = <strong>18.5%</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        
 
         <!-- Combo Table -->
         <table border="1" cellpadding="5" cellspacing="0"
-          style="margin-bottom: 40px; width: 100%; display: none; margin-top: 30px; color: #1c1c1c; background-color: #fff;" class="comboResultTable">
+          style="margin-bottom: 40px; width: 100%; display: none; margin-top: 30px; color: #1c1c1c; background-color: #fff;"
+          class="comboResultTable">
           <thead style="background-color: #f1f1f1;">
             <tr style="">
               <th>Anchor</th>
@@ -124,7 +181,7 @@
 
       </div>
 
-      
+
 
       <!-- Summary Section -->
       <div id="summarySection" style="display: none; margin-top: 40px;">
@@ -134,71 +191,232 @@
 
           <div
             style="background: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 30px; margin-top: 30px;">
-  
+
             <!-- First row: SS Summary -->
             <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 30px;">
-              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf7eb;">
+              <div
+                style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf7eb;">
                 <h3 style="font-size: 18px; color: #1c1c1c;">SS HIGHEST %</h3>
                 <div id="ssHighest" style="font-size: 16px; font-weight: bold; color: #2e7d32;"></div>
               </div>
-  
-              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #f7eaea;">
+
+              <div
+                style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #f7eaea;">
                 <h3 style="font-size: 18px; color: #1c1c1c;">SS LOWEST %</h3>
                 <div id="ssLowest" style="font-size: 16px; font-weight: bold; color: #c62828;"></div>
               </div>
-  
-              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf0f7;">
+
+              <div
+                style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf0f7;">
                 <h3 style="font-size: 18px; color:#1c1c1c;">SS COMBO %</h3>
                 <div id="ssCombo" style="font-size: 25px; font-weight: bold; color: #1565c0;"></div>
               </div>
             </div>
-  
+
             <!-- Second row: CS Summary -->
             <div style="display: flex; flex-wrap: wrap; gap: 20px; ">
-              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf7eb;">
+              <div
+                style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf7eb;">
                 <h3 style="font-size: 18px; color: #1c1c1c;">CS HIGHEST %</h3>
                 <div id="csHighest" style="font-size: 16px; font-weight: bold; color: #2e7d32;"></div>
               </div>
-  
-              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #f7eaea;">
+
+              <div
+                style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #f7eaea;">
                 <h3 style="font-size: 18px; color: #1c1c1c;">CS LOWEST %</h3>
                 <div id="csLowest" style="font-size: 16px; font-weight: bold; color: #c62828;"></div>
               </div>
-  
-              <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf0f7;">
+
+              <div
+                style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background-color: #eaf0f7;">
                 <h3 style="font-size: 18px; color:#1c1c1c;">CS COMBO %</h3>
                 <div id="csCombo" style="font-size: 25px; font-weight: bold; color: #1565c0;"></div>
               </div>
             </div>
           </div>
         </div>
-        
+
 
         <!-- 🚀 PART 6E — CLEANED UP ADJUSTMENT SECTION -->
 
         <!-- Adjustment Section Title -->
         <div id="adjustmentSection" style="display: none; margin-top: 40px;">
-        <div class="adjustment-card-cont" style="padding: 20px; margin: 20px 0px; background-color: #272727;">
-          <h2 style="font-size: 1.4em; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Card %
-            Adjustments (GapFactor)</h2>
+          <div class="adjustment-card-cont" style="padding: 20px; margin: 20px 0px; background-color: #272727;">
+            <h2 style="font-size: 1.4em; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Card %
+              Adjustments (GapFactor)</h2>
 
-          <table border="1" cellpadding="8" cellspacing="0"
-            style="border-collapse: collapse; width: 100%; margin: 30px 0px; overflow-x: auto; color: #1c1c1c; background-color: #fff;">
-            <thead style="background-color: #f8f8f8;">
-              <tr style="border-bottom: 1px solid #ddd;">
-                <th style="text-align: left;">Type</th>
-                <th style="text-align: left;">Retailer</th>
-                <th>SS %</th>
-                <th>CS %</th>
-                <th>SS ADJ %</th>
-                <th>CS ADJ %</th>
-              </tr>
-            </thead>
-            <tbody id="combinedAdjustments">
-            </tbody>
-          </table>
-        </div>
-          
+
+
+
+
+            <!-- How SS ADJ % and CS ADJ % are calculated -->
+            <div
+              style="background-color: #f9f9f9; border-left: 5px solid #1565c0; padding: 12px 16px; margin-bottom: 15px; margin-top: 30px; font-size: 0.9em; color: #333;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>How SS ADJ % and CS ADJ % are calculated</strong>
+                <button onclick="togglecardAdjExplanation()"
+                  style="font-size: 0.8em; padding: 4px 8px; cursor: pointer;">Show More ▼</button>
+              </div>
+
+              <div id="cardAdjContent" style="display: none; margin-top: 10px;">
+                <p style="margin: 0 0 10px 0;">
+                  These values represent the adjusted percentage discounts for each card to ensure the Combo % stays
+                  visibly better
+                  than the sum of individual cards. This is expected behavior to enforce:
+                  <strong>Individual Card Max % &lt; Combo % − Gap</strong>.
+                </p>
+                <br />
+                <br />
+
+                🔵 <strong>SuperSaver (SS ADJ %)</strong><br>
+                <em>Adjustment Formula:</em><br>
+                Adjustment = Original SS % − Adjustment Amount
+
+                <ul style="margin-top: 5px;">
+                  <li>Anchor SS = <strong>14.00%</strong></li>
+                  <li>Savings SS = <strong>10.00%</strong></li>
+                  <li>Total SS Combo % = 14.00 + 10.00 = <strong>24.00%</strong></li>
+                  <li>Gap Factor = <strong>10%</strong> → 24.00 × 0.10 = <strong>2.40%</strong></li>
+                  <li>Combo Target (after gap) = 24.00 − 2.40 = <strong>21.60%</strong></li>
+                  <li>Adjustment Needed = 24.00 − 21.60 = <strong>2.40%</strong></li>
+                </ul>
+
+                Adjustment logic:
+                <ul style="margin-top: 5px;">
+                  <li>Since both are non-Super7 → adjustment is split equally</li>
+                  <li>Each card gets adjusted by 2.40 ÷ 2 = <strong>1.20%</strong></li>
+                </ul>
+
+                Final Adjusted Values:
+                <ul style="margin-top: 5px;">
+                  <li>Anchor SS ADJ % = 14.00 − 1.20 = <strong>12.80%</strong></li>
+                  <li>Savings SS ADJ % = 10.00 − 1.20 = <strong>8.80%</strong></li>
+                </ul>
+
+                The lowest adjusted value across all combos is saved as the final SS ADJ % for each card.
+
+                <br><br>
+                🟢 <strong>ClubSaver (CS ADJ %)</strong><br>
+                <em>Adjustment Formula:</em><br>
+                Adjustment = Original CS % − Weighted Share of Required Reduction
+
+                <p>
+
+                </p>
+
+                <ul style="margin-top: 5px;">
+                  <li>If both cards are CS-eligible → Adjustment is split proportionally based on original CS %</li>
+                  <li>If only Anchor is CS-eligible → Only Anchor is adjusted</li>
+                  <li>If Savings is not CS-eligible → CS ADJ % = N/A</li>
+                </ul>
+
+                <em>Example:</em><br>
+                Let’s say:
+                <ul style="margin-top: 5px;">
+                  <li>Anchor CS = <strong>7.0%</strong></li>
+                  <li>Savings CS = <strong>3.0%</strong></li>
+                  <li>Total CS Combo % = 10.00%</li>
+                  <li>Gap Factor = <strong>5%</strong> → 10.00 × 0.05 = <strong>0.50%</strong></li>
+                  <li>Combo Target (after gap) = 10.00 − 0.50 = <strong>9.50%</strong></li>
+                  <li>Adjustment Needed = 10.00 − 9.50 = <strong>0.50%</strong></li>
+                </ul>
+
+                Weighted split:
+                <ul style="margin-top: 5px;">
+                  <li>Anchor contributes 7.0 / 10.0 = 70%</li>
+                  <li>Savings contributes 3.0 / 10.0 = 30%</li>
+                  <li>Anchor adjustment = 0.50 × 70% = <strong>0.35%</strong></li>
+                  <li>Savings adjustment = 0.50 × 30% = <strong>0.15%</strong></li>
+                </ul>
+
+                Final Adjusted Values:
+                <ul style="margin-top: 5px;">
+                  <li>Anchor CS ADJ % = 7.00 − 0.35 = <strong>6.65%</strong></li>
+                  <li>Savings CS ADJ % = 3.00 − 0.15 = <strong>2.85%</strong></li>
+                </ul>
+
+                The lowest adjusted value across all combos is saved as the final CS ADJ % for each card.
+                This behavior ensures: <strong>Individual Card Max % &lt; Combo % − Gap</strong>.
+                </p>
+              </div>
+            </div>
+
+            <!-- Why ClubSaver (CS) Uses Weighted Adjustments While SuperSaver (SS) Does Not -->
+            <div
+              style="background-color: #f9f9f9; border-left: 5px solid #1565c0; padding: 12px 16px; margin-bottom: 15px; margin-top: 15px; font-size: 0.9em; color: #333;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>Why ClubSaver (CS) Uses Weighted Adjustments While SuperSaver (SS) Does Not</strong>
+                <button onclick="toggleCSSSExplanation()"
+                  style="font-size: 0.8em; padding: 4px 8px; cursor: pointer;">Show More ▼</button>
+              </div>
+
+              <div id="ssCsContent" style="display: none; margin-top: 10px;">
+                <p style="margin: 0 0 10px 0;"></p>
+                <p>
+                  In SuperSaver (SS), both cards typically offer the same type of reward (SS %), and there is no need to
+                  prioritize one over the other. That’s why, when a reduction is needed, the adjustment is applied
+                  equally between the two cards—unless one is a Super7 card, in which case it’s protected from
+                  reduction.
+                </p>
+                <p>
+                  In contrast, ClubSaver (CS) adjustments consider the relative contribution of each card’s original CS
+                  %. One card might contribute more heavily to the total combo value. To keep the adjustment fair and
+                  realistic, the reduction is applied proportionally (weighted)—each card gives up part of the
+                  adjustment based on how much it originally contributed to the combo.
+                </p>
+                <p>
+                  This weighted logic ensures that cards with higher CS % take more of the cut, while those with lower
+                  CS % are affected less. It reflects a more accurate and fair distribution of adjustment, especially
+                  when the CS values between cards vary widely.
+                </p>
+
+              </div>
+            </div>
+
+            <!-- Identical CS ADJ %? Here's Why -->
+            <div
+              style="background-color: #f9f9f9; border-left: 5px solid #f3d421; padding: 12px 16px; margin-bottom: 15px; margin-top: 15px; font-size: 0.9em; color: #333;">
+
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>Identical CS ADJ %? Here's Why</strong>
+                <button onclick="toggleCSJPercentExplanation()"
+                  style="font-size: 0.8em; padding: 4px 8px; cursor: pointer;">Show
+                  More ▼</button>
+              </div>
+
+              <div id="CSPercentContent" style="display: none; margin-top: 10px;">
+                <p style="margin:0;">
+                  The <strong>CS ADJ %</strong> values might appear identical across different retailers when:
+                <ul style="margin: 10px 0 0 16px; padding-left: 0;">
+                  <li>The same anchor card is paired with all savings cards.</li>
+                  <li>Only the anchor is CS-eligible, and all selected savings are SS-only or Super7.</li>
+                  <li>The total combo % adjustment needed is applied only to the CS-eligible card (usually the anchor),
+                    resulting in repeated values.</li>
+                </ul>
+                This is expected behavior based on the weighted adjustment logic.
+                </p>
+              </div>
+
+            </div>
+
+
+            <table border="1" cellpadding="8" cellspacing="0"
+              style="border-collapse: collapse; width: 100%; margin: 30px 0px; overflow-x: auto; color: #1c1c1c; background-color: #fff;">
+              <thead style="background-color: #f8f8f8;">
+                <tr style="border-bottom: 1px solid #ddd;">
+                  <th style="text-align: left;">Type</th>
+                  <th style="text-align: left;">Retailer</th>
+                  <th>SS %</th>
+                  <th>CS %</th>
+                  <th>SS ADJ %</th>
+                  <th>CS ADJ %</th>
+                </tr>
+              </thead>
+              <tbody id="combinedAdjustments">
+              </tbody>
+            </table>
+          </div>
+
 
 
           <!-- Adjustment Chart -->
@@ -206,58 +424,61 @@
 
             <div class="summary-card-cont" style="padding: 20px; margin: 60px 0px; background-color: #272727;">
               <!-- 🚀 EXPANDABLE ADJUSTMENT CHART ALERT -->
-            <div
-            style="background-color: #f9f9f9; border-left: 5px solid #2196F3; padding: 12px 16px; margin-bottom: 15px; font-size: 0.9em; color: #333;">
+              <h2 style="font-size: 1.4em; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Adjustment Chart</h2>
 
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <strong>Adjustment Chart Explanation</strong>
-              <button onclick="toggleChartExplanation()"
-                style="font-size: 0.8em; padding: 4px 8px; cursor: pointer;">Show
-                More ▼</button>
+              <div
+                style="background-color: #f9f9f9; border-left: 5px solid #2196F3; padding: 12px 16px; margin-bottom: 30px; margin-top: 30px; font-size: 0.9em; color: #333;">
+
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong>Adjustment Chart Explanation</strong>
+                  <button onclick="toggleChartExplanation()"
+                    style="font-size: 0.8em; padding: 4px 8px; cursor: pointer;">Show
+                    More ▼</button>
+                </div>
+
+                <div id="chartExplanationContent" style="display: none; margin-top: 10px;">
+                  <p style="margin-bottom: 30px;">
+                    <strong>How "Individual Card Max %" is calculated:</strong><br>
+                    This shows the best % a member could get by buying cards individually (instead of as a combo).<br>
+                    Formula = Highest Anchor % + Highest Savings % (after adjustments).<br>
+                    <u>SuperSaver:</u> Anchor SS ADJ % + Savings SS ADJ %<br>
+                    <u>ClubSaver:</u> Anchor CS ADJ % + Savings %:<br>
+                    &nbsp; - If Savings is not CS-available → use SS ADJ %<br>
+                    &nbsp; - If Savings is CS-available → use CS ADJ %
+                  </p>
+                </div>
+
+              </div>
+
+
+              <table border="1" cellpadding="10" cellspacing="0"
+                style="border-collapse: collapse; width: 100%; color: #1c1c1c; background-color: #fff; padding: 15px;">
+                <thead style="background-color: #f1f1f1;">
+                  <tr>
+                    <th style="text-align: left;">Membership</th>
+                    <th>Card Combo %</th>
+                    <th>Individual Card Max %</th>
+                    <th>Individual Top Value Retailers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid #ddd;">
+                    <td>SuperSaver</td>
+                    <td id="chartSSCombo"></td>
+                    <td id="chartSSIndividual"></td>
+                    <td id="chartSSTopRetailers"></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #ddd;">
+                    <td>ClubSaver</td>
+                    <td id="chartCSCombo"></td>
+                    <td id="chartCSIndividual"></td>
+                    <td id="chartCSTopRetailers"></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
-            <div id="chartExplanationContent" style="display: none; margin-top: 10px;">
-              <p style="margin-bottom: 8px;">
-                <strong>How "Individual Card Max %" is calculated:</strong><br>
-                This shows the best % a member could get by buying cards individually (instead of as a combo).<br>
-                Formula = Highest Anchor % + Highest Savings % (after adjustments).<br>
-                <u>SuperSaver:</u> Anchor SS ADJ % + Savings SS ADJ %<br>
-                <u>ClubSaver:</u> Anchor CS ADJ % + Savings %:<br>
-                &nbsp; - If Savings is not CS-available → use SS ADJ %<br>
-                &nbsp; - If Savings is CS-available → use CS ADJ %
-              </p>
-            </div>
 
-          </div>
-
-
-          <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%; color: #1c1c1c; background-color: #fff; padding: 15px;">
-            <thead style="background-color: #f1f1f1;">
-              <tr>
-                <th style="text-align: left;">Membership</th>
-                <th>Card Combo %</th>
-                <th>Individual Card Max %</th>
-                <th>Individual Top Value Retailers</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid #ddd;">
-                <td>SuperSaver</td>
-                <td id="chartSSCombo"></td>
-                <td id="chartSSIndividual"></td>
-                <td id="chartSSTopRetailers"></td>
-              </tr>
-              <tr style="border-bottom: 1px solid #ddd;">
-                <td>ClubSaver</td>
-                <td id="chartCSCombo"></td>
-                <td id="chartCSIndividual"></td>
-                <td id="chartCSTopRetailers"></td>
-              </tr>
-            </tbody>
-          </table>
-            </div>
-
-            
 
 
           </div>
