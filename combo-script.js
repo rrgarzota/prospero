@@ -9,7 +9,7 @@ const retailers = [
   { name: 'Dick\'s Sporting Goods', ss: 3.5, cs: 0.0, availableCS: false, isSuper7: false },
   { name: 'Williams-Sonoma', ss: 9.0, cs: 5.5, availableCS: true, isSuper7: false },
   { name: 'Pottery Barn', ss: 9.0, cs: 5.5, availableCS: true, isSuper7: false },
-  { name: 'West Elm', ss: 7.5, cs: 4.5, availableCS: true, isSuper7: false },
+  { name: 'West Elm', ss: 7.5, cs: 4.0, availableCS: true, isSuper7: false },
   { name: 'Home Depot', ss: 5.2, cs: 0.0, availableCS: false, isSuper7: true },
   { name: 'Lowe’s', ss: 6.1, cs: 0.0, availableCS: false, isSuper7: true },
   { name: 'Ace Hardware', ss: 6.7, cs: 3.2, availableCS: true, isSuper7: false }
@@ -109,6 +109,16 @@ function generateCombos() {
       row.innerHTML = `
         <td>${anchor.name}</td>
         <td>${savings.name}</td>
+        <td>
+          <span class="blue">${anchor.ss.toFixed(2)}%</span> + 
+          <span class="blue">${savings.ss.toFixed(2)}%</span>
+        </td>
+        <td>
+          <span class="green">${(anchor.ss - 3.5).toFixed(2)}%</span> + 
+          <span class="${(!savings.availableCS || useSSForCS) ? 'blue' : 'green'}">
+            ${(useSSForCS || !savings.availableCS) ? savings.ss.toFixed(2) : savings.cs.toFixed(2)}%
+          </span>
+        </td>
         <td>${ssCombo.toFixed(2)}%</td>
         <td>${csCombo.toFixed(2)}%</td>
       `;
@@ -266,6 +276,7 @@ function runGapFactorAdjustment(SSCombo, CSCombo, gapFactor, gapFactorCS) {
       </tr>
     `;
   });
+
 
   savings.forEach(s => {
     combinedTable.innerHTML += `
