@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fixed Size Logo Resizer for Webflow</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+    #download {
+      display: inline-block;
+      margin-top: 10px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    h2 {
+      margin-bottom: 0;
+    }
+    ol {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Prepare and Resize Your Logo</h2>
+
+  <ol>
+    <li>
+      <strong>Step 1: Remove Background</strong><br>
+      Go to <a href="https://www.photoroom.com/tools/background-remover" target="_blank">Photoroom Background Remover</a>, upload your logo, and download the free version.
+    </li>
+    <li>
+      <strong>Step 2: Resize for Webflow Upload</strong><br>
+      Upload your cleaned logo below. It will be resized to exactly <strong>160×40 pixels</strong> (ideal for card headers).
+    </li>
+  </ol>
+
+  <input type="file" id="upload" accept="image/*"><br><br>
+  <canvas id="canvas" width="160" height="40"></canvas><br>
+  <a id="download" download="logo-160x40.png">Download Fixed Size Logo</a>
+
+  <script>
+    const upload = document.getElementById('upload');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const download = document.getElementById('download');
+
+    upload.addEventListener('change', () => {
+      const file = upload.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvasWidth = 160;
+          const canvasHeight = 40;
+
+          // Calculate scaled size while maintaining aspect ratio
+          const scale = Math.min(canvasWidth / img.width, canvasHeight / img.height);
+          const scaledWidth = img.width * scale;
+          const scaledHeight = img.height * scale;
+
+          const offsetX = (canvasWidth - scaledWidth) / 2;
+          const offsetY = (canvasHeight - scaledHeight) / 2;
+
+          // Clear + draw
+          ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+          ctx.drawImage(img, offsetX, offsetY, scaledWidth, scaledHeight);
+
+          // Download link
+          const dataUrl = canvas.toDataURL("image/png");
+          download.href = dataUrl;
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>
