@@ -404,6 +404,7 @@ function runGapFactorAdjustment(SSCombo, CSCombo, gapFactor, gapFactorCS) {
   // === Show the chart ===
   document.getElementById('adjustmentSection').style.display = 'block';
   document.getElementById('adjustmentChartSection').style.display = 'block';
+  document.getElementById('combo-explanation').style.display = 'block';
   // Show the combo results table
   document.querySelector('.comboResultTable').style.display = 'table';
 

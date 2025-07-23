@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <ListOfFullProduct xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <FullProduct>
+      <Pid>157993.156074.8C0134638C25338F.9F38C9DE1C7AF51A.98616064</Pid>
+      <Name>Household Essentials 2-pk. Cedar Fresh Lint Rollers with 4 Lint Roller Refills, Adult Unisex, Blue</Name>
+      <Brand xsi:nil="true" />
+      <Cid>157993.156074.8C0134638C25338F</Cid>
+      <CatalogName>Kohls Product Feed</CatalogName>
+      <Aid>157993</Aid>
+      <AdvertiserName>Kohl's</AdvertiserName>
+      <AdvertiserImage>574846.png</AdvertiserImage>
+      <AdvertiserCountry>US</AdvertiserCountry>
+      <LinkUrl>https://track.flexlinkspro.com/p.ashx?foc=104&amp;fos=6&amp;fopid=1324238.157993.156074.8C0134638C25338F.9F38C9DE1C7AF51A.98616064</LinkUrl>
+      <ShortDescription xsi:nil="true" />
+      <Description>Keep sweaters, coats and pants looking presentable with these Cedar Fresh lint rollers. In blue.FEATURES 90 sheets per roll Easy-peel diagonal cut sheets Fragrance free WHAT'S INCLUDED 2 Cedar Fresh lint rollers 4 lint roller refills CONSTRUCTION &amp; CARE Manufacturer's 30-day limited warrantyFor warranty information please click here Size: One Size. Gender: unisex. Age Group: adult.</Description>
+      <CategoryId>3080</CategoryId>
+      <Category>Home &amp; Garden &gt;Household Supplies &gt;Laundry Supplies &gt;Lint Rollers </Category>
+      <ImageUrl>https://media.kohlsimg.com/is/image/kohls/2008385?wid=800&amp;hei=800&amp;op_sharpen=1&amp;ver=1</ImageUrl>
+      <Price>24.99</Price>
+      <PriceCurrency>USD</PriceCurrency>
+      <SalePrice>24.99</SalePrice>
+      <FinalPrice>24.99</FinalPrice>
+      <Discount>0%</Discount>
+      <isOnSale>false</isOnSale>
+      <IsInstock>true</IsInstock>
+      <Keywords xsi:nil="true" />
+      <Manufacturer>Household Essentials</Manufacturer>
+      <UPCorEAN>0091492990757</UPCorEAN>
+      <MPN>79120-1</MPN>
+      <SKU>98616064</SKU>
+      <Color>Blue</Color>
+      <Gender>unisex</Gender>
+      <Size>One Size</Size>
+      <Condition>New</Condition>
+      <DeepLinkURL>https://www.kohls.com/product/prd-2008385/household-essentials-2-pk-cedar-fresh-lint-rollers-with-4-lint-roller-refills.jsp?skuid=98616064&amp;CID=seo_offers&amp;utm_campaign=SAG&amp;utm_medium=organic&amp;utm_source=google&amp;utm_product=98616064</DeepLinkURL>
+      <StatusId>1</StatusId>
+    </FullProduct>
+    <FullProduct>
+      <Pid>157993.156074.8C0134638C25338F.E4372B803840CDE7.50091184</Pid>
+      <Name>Yankee Candle 2-Pack Bahama Breeze Sidekick Refills, Multi</Name>
+      <Brand xsi:nil="true" />
+      <Cid>157993.156074.8C0134638C25338F</Cid>
+      <CatalogName>Kohls Product Feed</CatalogName>
+      <Aid>157993</Aid>
+      <AdvertiserName>Kohl's</AdvertiserName>
+      <AdvertiserImage>574846.png</AdvertiserImage>
+      <AdvertiserCountry>US</AdvertiserCountry>
+      <LinkUrl>https://track.flexlinkspro.com/p.ashx?foc=104&amp;fos=6&amp;fopid=1324238.157993.156074.8C0134638C25338F.E4372B803840CDE7.50091184</LinkUrl>
+      <ShortDescription xsi:nil="true" />
+      <Description>Introducing car fragrance that fits your style. Sleek designs with premium finishes offer a beautiful way to make your journey your own with these Yankee Candle Bahama Breeze Sidekick refills. Introducing car fragrance that fits your style. Sleek designs with premium finishes offer a beautiful way to make your journey your own with these Yankee Candle Bahama Breeze Sidekick refills. FEATURES Fragrance notes: Top - Exotic Fruits, Pineapple, Passion Fruit, Grapefruit; Middle - Mango, Peach, Tropical Fruits; Base - Musk Volume: 1 oz. (each)DETAILS 2” x 1.063” x 4.875” Plastic Scent time: 720 Hours (each) Imported Model no. 1663256 Size: One Size. Color: Multi. Gender: unisex. Age Group: adult.</Description>
+      <CategoryId>5847</CategoryId>
+      <Category>Home &amp; Garden &gt;Decor &gt;Home Fragrances &gt;Fragrance Oil </Category>
+      <ImageUrl>https://media.kohlsimg.com/is/image/kohls/6545150?wid=800&amp;hei=800&amp;op_sharpen=1</ImageUrl>
+      <Price>11.99</Price>
+      <PriceCurrency>USD</PriceCurrency>
+      <SalePrice>11.99</SalePrice>
+      <FinalPrice>11.99</FinalPrice>
+      <Discount>0%</Discount>
+      <isOnSale>false</isOnSale>
+      <IsInstock>true</IsInstock>
+      <Keywords xsi:nil="true" />
+      <Manufacturer>Yankee Candle</Manufacturer>
+      <UPCorEAN>0192833098863</UPCorEAN>
+      <MPN>1663256</MPN>
+      <SKU>50091184</SKU>
+      <Color>Multi</Color>
+      <Gender>unisex</Gender>
+      <Size>One Size</Size>
+      <Condition>New</Condition>
+      <DeepLinkURL>https://www.kohls.com/product/prd-6545150/yankee-candle-2-pack-bahama-breeze-sidekick-refills.jsp?skuid=50091184&amp;CID=seo_offers&amp;utm_campaign=SAG&amp;utm_medium=organic&amp;utm_source=google&amp;utm_product=50091184</DeepLinkURL>
+      <StatusId>1</StatusId>
+    </FullProduct>
+  </ListOfFullProduct>

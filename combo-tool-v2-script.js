@@ -1,47 +1,18 @@
 const cards = [
-    { Name: 'Ace Hardware', SS: 6.7, CS: 3.2, availableCS: true, Super7: false, adjustable: true, Category: ['Home'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Adidas', SS: 11.5, CS: 8.0, availableCS: true, Super7: false, adjustable: true, Category: ['Sports', 'Fashion'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Amazon', SS: 2.7, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Entertainment', 'Fashion', 'Home', 'Sports', 'Auto', 'Super 7', 'Pharmacy', 'Grocery', 'Pets'], Tier: 'SuperSaver' },
-    { Name: 'Athleta', SS: 11.5, CS: 8.0, availableCS: true, Super7: false, adjustable: true, Category: ['Sports', 'Fashion'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Lowe’s', SS: 6.1, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Home', 'Auto', 'Super 7', 'Pets'], Tier: 'SuperSaver' },
-    { Name: 'Nike', SS: 12.0, CS: 8.5, availableCS: true, Super7: false, adjustable: true, Category: ['Sports', 'Fashion'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Pottery Barn', SS: 9.0, CS: 5.5, availableCS: true, Super7: false, adjustable: true, Category: ['Home'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Target', SS: 5.2, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Grocery', 'Entertainment', 'Fashion', 'Home', 'Super 7', 'Sports', 'Pharmacy', 'Pets'], Tier: 'SuperSaver' },
-    { Name: 'The Home Depot', SS: 5.2, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Home', 'Auto', 'Super 7', 'Pets'], Tier: 'SuperSaver' },
-    { Name: 'Under Armour', SS: 13.0, CS: 9.5, availableCS: true, Super7: false, adjustable: true, Category: ['Sports'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'West Elm', SS: 7.5, CS: 4.0, availableCS: true, Super7: false, adjustable: true, Category: ['Home'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Instacart', SS: 5.50, CS: 0.0, availableCS: false, Super7: false, adjustable: false, Category: ['Grocery', 'Pharmacy', 'Pets'], Tier: 'SuperSaver' },
-    { Name: 'Williams-Sonoma', SS: 9.0, CS: 5.5, availableCS: true, Super7: false, adjustable: true, Category: ['Home'], Tier: 'SuperSaver,ClubSaver' },
-    // From Kristina's list
-    { Name: '76 Fuel', SS: 2.2, CS: 0.0, availableCS: false, Super7: false, adjustable: false, Category: ['Gasoline'], Tier: 'SuperSaver' },
-    { Name: 'Apple', SS: 3.30, CS: 0.0, availableCS: false, Super7: false, adjustable: false, Category: ['Entertainment'], Tier: 'SuperSaver' },
-    { Name: 'Bath & Body Works', SS: 7.9, CS: 4.4, availableCS: true, Super7: false, adjustable: true, Category: ['Fashion'], Tier: 'SuperSaver,ClubSaver' },    
-    { Name: 'BJ’s Restaurants', SS: 13.2, CS: 9.7, availableCS: true, Super7: false, adjustable: true, Category: ['Dining'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Chevron', SS: 2.9, CS: 0.0, availableCS: false, Super7: false, adjustable: false, Category: ['Gasoline'], Tier: 'SuperSaver' },
-    { Name: 'Columbia Sportswear', SS: 13.5, CS: 10.0, availableCS: true, Super7: false, adjustable: true, Category: ['Sports'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'CVS', SS: 9.0, CS: 5.5, availableCS: true, Super7: true, adjustable: false, Category: ['Grocery', 'Super 7', 'Pharmacy', 'Pets'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Gap', SS: 11.5, CS: 8.0, availableCS: true, Super7: false, adjustable: true, Category: ['Fashion'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Kohl’s', SS: 9.3, CS: 5.8, availableCS: true, Super7: false, adjustable: true, Category: ['Fashion', 'Home'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Macy’s', SS: 11.5, CS: 8.0, availableCS: true, Super7: false, adjustable: true, Category: ['Fashion', 'Home'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Pilot Flying J', SS: 5.0, CS: 1.5, availableCS: true, Super7: false, adjustable: true, Category: ['Travel', 'Gasoline'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Safeway', SS: 3.5, CS: 0.0, availableCS: false, Super7: false, adjustable: false, Category: ['Gasoline', 'Grocery', 'Pharmacy', 'Pets'], Tier: 'SuperSaver' },
-    { Name: 'Texaco', SS: 2.9, CS: 0.0, availableCS: false, Super7: false, adjustable: false, Category: ['Gasoline'], Tier: 'SuperSaver' },
-    { Name: 'T.J.Maxx', SS: 9.0, CS: 5.5, availableCS: true, Super7: false, adjustable: true, Category: ['Fashion', 'Home'], Tier: 'SuperSaver,ClubSaver' },
-    { Name: 'Walgreens', SS: 5.9, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Grocery', 'Super 7', 'Pharmacy', 'Pets'], Tier: 'SuperSaver' },
-    { Name: 'Walmart', SS: 2.1, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Grocery', 'Entertainment', 'Fashion', 'Gasoline', 'Home', 'Super 7', 'Auto', 'Sports', 'Pharmacy', 'Pets'], Tier: 'SuperSaver' },
-
-    // Combo only
-    { Name: 'Buca di Beppo', SS: 16.2, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Dining'], Tier: 'SuperSaver' },
-    { Name: 'Fanatics', SS: 16.1, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Fashion', 'Sports'], Tier: 'SuperSaver' },
-    { Name: 'Omaha Steaks', SS: 16.0, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Dining'], Tier: 'SuperSaver' },
-    { Name: 'Red Robin', SS: 10.9, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Dining'], Tier: 'SuperSaver' }
-    
-
-
-
-
+    { Name: 'Ace Hardware', SS: 6.7, CS: 3.2, availableCS: true, Super7: false, Category: ['Home'], Tier: 'SuperSaver,ClubSaver' },
+    { Name: 'Adidas', SS: 11.5, CS: 8.0, availableCS: true, Super7: false, Category: ['Sports', 'Fashion'], Tier: 'SuperSaver,ClubSaver' },
+    { Name: 'Amazon', SS: 2.7, CS: 0.0, availableCS: false, Super7: true, Category: ['Entertainment', 'Fashion', 'Home', 'Sports', 'Auto', 'Super 7', 'Pharmacy', 'Grocery', 'Pets'], Tier: 'SuperSaver' },
+    { Name: 'Athleta', SS: 11.5, CS: 8.0, availableCS: true, Super7: false, Category: ['Sports', 'Fashion'], Tier: 'SuperSaver,ClubSaver' },
+    { Name: 'Lowe’s', SS: 6.1, CS: 0.0, availableCS: false, Super7: true, Category: ['Home', 'Auto', 'Super 7', 'Pets'], Tier: 'SuperSaver' },
+    { Name: 'Nike', SS: 12.0, CS: 8.5, availableCS: true, Super7: false, Category: ['Sports', 'Fashion'], Tier: 'SuperSaver,ClubSaver' },
+    { Name: 'Pottery Barn', SS: 9.0, CS: 5.5, availableCS: true, Super7: false, Category: ['Home'], Tier: 'SuperSaver,ClubSaver' },
+    { Name: 'Target', SS: 5.2, CS: 0.0, availableCS: false, Super7: true, Category: ['Grocery', 'Entertainment', 'Fashion', 'Home', 'Super 7', 'Sports', 'Pharmacy', 'Pets'], Tier: 'SuperSaver' },
+    { Name: 'The Home Depot', SS: 5.2, CS: 0.0, availableCS: false, Super7: true, Category: ['Home', 'Auto', 'Super 7', 'Pets'], Tier: 'SuperSaver' },
+    { Name: 'Under Armour', SS: 13.0, CS: 9.5, availableCS: true, Super7: false, Category: ['Sports'], Tier: 'SuperSaver,ClubSaver' },
+    { Name: 'West Elm', SS: 7.5, CS: 4.0, availableCS: true, Super7: false, Category: ['Home'], Tier: 'SuperSaver,ClubSaver' },
+    { Name: 'Instacart', SS: 5.50, CS: 0.0, availableCS: false, Super7: false, Category: ['Grocery', 'Pharmacy', 'Pets'], Tier: 'SuperSaver'},
+    { Name: 'Williams-Sonoma', SS: 9.0, CS: 5.5, availableCS: true, Super7: false, Category: ['Home'], Tier: 'SuperSaver,ClubSaver' }
 ];
-
 
 const categories = ['Auto', 'Dining', 'Entertainment', 'Fashion', 'Gasoline', 'Grocery', 'Home', 'Pets', 'Pharmacy', 'Sport', 'Super 7', 'Travel'];
 const categoryDropdown = document.getElementById("categoryDropdown");
@@ -165,9 +136,6 @@ function generateCombos() {
     }
 
     summarizeCombos(combos, minThreshold);
-
-    document.getElementById("singleAdjustmentSection").style.display = "none";
-
 }
 
 const summaryContainer = document.getElementById("summary");
@@ -356,185 +324,15 @@ function applyManualSelection() {
 </tbody></table>`;
 
     manualSummary.innerHTML = tableHTML;
-
-    window.manualCombos = filtered;
-    window.manualSuggested = {
-        ss: parseFloat(suggestedSS),
-        cs: parseFloat(suggestedCS)
-    };
-
-    // Show adjustment section
-    document.getElementById("adjustedCardResults").innerHTML = "";
-    document.getElementById("singleAdjustmentSection").style.display = "block";
-
-
-
 }
+
+
+
+
+
+
 
 function getComboSource(combos, targetVal, key) {
     const match = combos.find(c => parseFloat(c[key]) === targetVal);
     return match ? `<span class="text-muted small">${match.anchor} + ${match.savings}</span>` : '';
 }
-
-
-function adjustSingleCards() {
-    const gapFactor = parseFloat(document.getElementById("gapFactor").value); // % of original to reduce
-    const maxReduction = parseFloat(document.getElementById("maxReduction").value);
-  
-    const selectedCombos = window.manualCombos || [];
-    const usedCardNames = new Set();
-    selectedCombos.forEach(c => {
-      usedCardNames.add(c.anchor);
-      usedCardNames.add(c.savings);
-    });
-  
-    const rows = [];
-    usedCardNames.forEach(cardName => {
-      const card = cards.find(c => c.Name === cardName);
-      const adjustable = card.adjustable;
-      const locked = !adjustable || card.Super7;
-  
-      const result = {
-        name: card.Name,
-        originalSS: card.SS,
-        originalCS: card.CS,
-        adjustedSS: card.SS,
-        adjustedCS: card.availableCS ? card.CS : null,
-        ssReduction: 0,
-        csReduction: null,
-        status: locked ? "Locked" : "Adjusted"
-      };
-  
-      if (!locked) {
-        const rawSSReduction = card.SS * (gapFactor / 100);
-        const appliedSSReduction = Math.min(rawSSReduction, maxReduction);
-        result.adjustedSS = Math.max(card.minSS || 2, card.SS - appliedSSReduction);
-        result.ssReduction = appliedSSReduction;
-  
-        if (card.availableCS) {
-          const rawCSReduction = card.CS * (gapFactor / 100);
-          const appliedCSReduction = Math.min(rawCSReduction, maxReduction);
-          result.adjustedCS = Math.max(card.minCS || 2, card.CS - appliedCSReduction);
-          result.csReduction = appliedCSReduction;
-        }
-      }
-  
-      rows.push(result);
-    });
-  
-    const anchorNames = new Set(selectedCombos.map(c => c.anchor));
-    const savingsNames = new Set(selectedCombos.map(c => c.savings));
-  
-    let html = `<h5>Adjusted Individual Values</h5><table class="table table-bordered">
-      <thead><tr>
-        <th>Card</th><th>Original SS%</th><th>Adjusted SS%</th>
-        <th>Original CS%</th><th>Adjusted CS%</th><th>Status & Details</th>
-      </tr></thead><tbody>`;
-  
-    let rowIndex = 0;
-  
-    // Helper to build rows
-    function buildCardRow(r, group) {
-      const detailId = `details-${rowIndex++}`;
-      return `
-        <tr>
-          <td>${r.name}</td>
-          <td>${r.originalSS.toFixed(2)}%</td>
-          <td>${r.adjustedSS.toFixed(2)}%<br><small>(${r.originalSS.toFixed(2)}% - ${r.ssReduction.toFixed(2)}%)</small></td>
-          <td>${r.originalCS.toFixed(2)}%</td>
-          <td>${r.adjustedCS !== null
-            ? `${r.adjustedCS.toFixed(2)}%<br><small>(${r.originalCS.toFixed(2)}% - ${r.csReduction.toFixed(2)}%)</small>`
-            : '<span class="text-muted">N/A</span>'}</td>
-          <td>
-            ${r.status === 'Locked'
-              ? '<span class="badge bg-secondary">Locked</span>'
-              : '<span class="badge bg-success">Adjusted</span>'}
-            <br>
-            <button class="btn btn-sm btn-link p-0 mt-1" data-bs-toggle="collapse" data-bs-target="#${detailId}">
-              Show Details
-            </button>
-          </td>
-        </tr>
-        <tr class="collapse" id="${detailId}">
-          <td colspan="6">
-            <div class="bg-light p-2 rounded">
-              <strong>SS%</strong><br>
-              Original SS%: ${r.originalSS.toFixed(2)}%<br>
-              Raw Reduction (Original × Gap): (${r.originalSS.toFixed(2)}% × ${gapFactor.toFixed(2)}%) = ${(r.originalSS * gapFactor / 100).toFixed(2)}%<br>
-              Max Reduction Allowed: ${maxReduction.toFixed(2)}%<br>
-              Final Reduction Applied: ${r.ssReduction.toFixed(2)}%<br>
-              Adjusted SS%: ${r.adjustedSS.toFixed(2)}%<br><br>
-  
-              <strong>CS%</strong><br>
-              ${r.adjustedCS !== null
-                ? `Original CS%: ${r.originalCS.toFixed(2)}%<br>
-                   Raw Reduction (Original × Gap): (${r.originalCS.toFixed(2)}% × ${gapFactor.toFixed(2)}%) = ${(r.originalCS * gapFactor / 100).toFixed(2)}%<br>
-                   Max Reduction Allowed: ${maxReduction.toFixed(2)}%<br>
-                   Final Reduction Applied: ${r.csReduction.toFixed(2)}%<br>
-                   Adjusted CS%: ${r.adjustedCS.toFixed(2)}%`
-                : 'Original CS%: 0.00%<br>Not available for ClubSaver membership'}
-            </div>
-          </td>
-        </tr>
-      `;
-    }
-  
-    // Anchor group
-    html += `<tr class="table-light"><td colspan="6"><strong>Anchor Cards</strong></td></tr>`;
-    rows.forEach(r => { if (anchorNames.has(r.name)) html += buildCardRow(r, 'Anchor'); });
-  
-    // Savings group
-    html += `<tr class="table-light"><td colspan="6"><strong>Savings Cards</strong></td></tr>`;
-    rows.forEach(r => { if (savingsNames.has(r.name)) html += buildCardRow(r, 'Savings'); });
-  
-    html += `</tbody></table>`;
-  
-    // Max Individual % Summary with card name tracking
-let maxSSAnchor = { name: "", value: 0 };
-let maxSSSavings = { name: "", value: 0 };
-let maxCSAnchor = { name: "", value: 0 };
-let maxCSSavings = { name: "", value: 0 };
-
-rows.forEach(r => {
-  if (anchorNames.has(r.name)) {
-    if (r.adjustedSS > maxSSAnchor.value) maxSSAnchor = { name: r.name, value: r.adjustedSS };
-    if (r.adjustedCS !== null && r.adjustedCS > maxCSAnchor.value) maxCSAnchor = { name: r.name, value: r.adjustedCS };
-  }
-  if (savingsNames.has(r.name)) {
-    if (r.adjustedSS > maxSSSavings.value) maxSSSavings = { name: r.name, value: r.adjustedSS };
-    if (r.adjustedCS !== null && r.adjustedCS > maxCSSavings.value) maxCSSavings = { name: r.name, value: r.adjustedCS };
-  }
-});
-
-const combinedSS = (maxSSAnchor.value + maxSSSavings.value).toFixed(2);
-const combinedCS = (maxCSAnchor.value > 0 && maxCSSavings.value > 0)
-  ? (maxCSAnchor.value + maxCSSavings.value).toFixed(2)
-  : "N/A";
-
-// Render with retailer names
-html += `<h5>Max Individual % Summary</h5><table class="table table-bordered">
-  <thead><tr><th></th><th>Max Individual %</th><th>Suggested Combo %</th></tr></thead><tbody>
-  <tr>
-    <td>SS</td>
-    <td>
-      ${combinedSS}%<br>
-      <small>${maxSSAnchor.name} (${maxSSAnchor.value.toFixed(2)}%) + ${maxSSSavings.name} (${maxSSSavings.value.toFixed(2)}%)</small>
-    </td>
-    <td>${window.manualSuggested.ss.toFixed(2)}%</td>
-  </tr>
-  <tr>
-    <td>CS</td>
-    <td>
-      ${combinedCS !== "N/A"
-        ? `${combinedCS}%<br><small>${maxCSAnchor.name} (${maxCSAnchor.value.toFixed(2)}%) + ${maxCSSavings.name} (${maxCSSavings.value.toFixed(2)}%)</small>`
-        : "N/A"}
-    </td>
-    <td>${window.manualSuggested.cs.toFixed(2)}%</td>
-  </tr>
-  </tbody></table>`;
-
-document.getElementById("adjustedCardResults").innerHTML = html;
-
-
-  }
-  
