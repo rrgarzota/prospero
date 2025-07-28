@@ -29,6 +29,8 @@ const cards = [
     { Name: 'T.J.Maxx', SS: 9.0, CS: 5.5, availableCS: true, Super7: false, adjustable: true, Category: ['Fashion', 'Home'], Tier: 'SuperSaver,ClubSaver' },
     { Name: 'Walgreens', SS: 5.9, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Grocery', 'Super 7', 'Pharmacy', 'Pets'], Tier: 'SuperSaver' },
     { Name: 'Walmart', SS: 2.1, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Grocery', 'Entertainment', 'Fashion', 'Gasoline', 'Home', 'Super 7', 'Auto', 'Sports', 'Pharmacy', 'Pets'], Tier: 'SuperSaver' },
+    { Name: 'Best Buy', SS: 5.2, CS: 0.0, availableCS: false, Super7: false, adjustable: true, Category: ['Entertainment', 'Home'], Tier: 'SuperSaver' },
+
 
     // Combo only
     { Name: 'Buca di Beppo', SS: 16.2, CS: 0.0, availableCS: false, Super7: true, adjustable: false, Category: ['Dining'], Tier: 'SuperSaver' },
@@ -43,7 +45,7 @@ const cards = [
 ];
 
 
-const categories = ['Auto', 'Dining', 'Entertainment', 'Fashion', 'Gasoline', 'Grocery', 'Home', 'Pets', 'Pharmacy', 'Sport', 'Super 7', 'Travel'];
+const categories = ['Auto', 'Dining', 'Entertainment', 'Fashion', 'Gasoline', 'Grocery', 'Home', 'Pets', 'Pharmacy', 'Sports', 'Super 7', 'Travel'];
 const categoryDropdown = document.getElementById("categoryDropdown");
 categories.forEach(cat => {
     const opt = document.createElement("option");
