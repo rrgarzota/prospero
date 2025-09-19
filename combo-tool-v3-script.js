@@ -71,7 +71,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Sport', 'Fashion'], 
+   Category: ['Sports', 'Fashion'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
    {
@@ -179,7 +179,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Sport', 'Fashion'], 
+   Category: ['Sports', 'Fashion'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -347,7 +347,7 @@ const cards= [
    availableCS: true, 
    Super7: true,  
    adjustable: false, 
-   Category: ['Grocery', 'Pharmacy','Pets' ], 
+   Category: ['Grocery', 'Pharmacy','Pets', 'Super 7'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -1007,7 +1007,7 @@ const cards= [
    availableCS: false, 
    Super7: true,  
    adjustable: false, 
-   Category: ['Entertainment','Fashion','home','Sports','Auto','Pharmacy','Grocery','Pets'], 
+   Category: ['Entertainment','Fashion','home','Sports','Auto','Pharmacy','Grocery','Pets', 'Super 7'], 
    Tier: 'SuperSaver,' 
   },
   {
@@ -1127,7 +1127,7 @@ const cards= [
    availableCS: false, 
    Super7: true,  
    adjustable: false, 
-   Category: ['Home','Auto','Pets'], 
+   Category: ['Home','Auto','Pets', 'Super 7'], 
    Tier: 'SuperSaver,' 
   },    
   {
@@ -1187,7 +1187,7 @@ const cards= [
    availableCS: false, 
    Super7: true,  
    adjustable: false, 
-   Category:  ['Grocery','Entertainment','Fashion','Home','Sports','Pharmacy','Pets'], 
+   Category:  ['Grocery','Entertainment','Fashion','Home','Sports','Pharmacy','Pets', 'Super 7'], 
    Tier: 'SuperSaver,' 
   },
   {
@@ -1211,7 +1211,7 @@ const cards= [
    availableCS: false, 
    Super7: true,  
    adjustable: false, 
-   Category: ['Gasoline','Auto','Pets'], 
+   Category: ['Gasoline','Auto','Pets', 'Super 7'], 
    Tier: 'SuperSaver,' 
   },
   {
@@ -1247,7 +1247,7 @@ const cards= [
    availableCS: false, 
    Super7: true,  
    adjustable: false, 
-   Category: ['Grocery','Pharmacy','Pets'], 
+   Category: ['Grocery','Pharmacy','Pets', 'Super 7'], 
    Tier: 'SuperSaver,' 
   },
   {
@@ -1259,7 +1259,7 @@ const cards= [
    availableCS: false, 
    Super7: true,  
    adjustable: false, 
-   Category: ['Grocery','Entertainment','Fashion','Gasoline','Home','Auto','Sports','Pharmacy','Pets'], 
+   Category: ['Grocery','Entertainment','Fashion','Gasoline','Home','Auto','Sports','Pharmacy','Pets', 'Super 7'], 
    Tier: 'SuperSaver,' 
   },
    { 
