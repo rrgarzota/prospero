@@ -1578,7 +1578,8 @@ function generateCombos() {
                   ssBreakdown: `<span class='ss-color'>(<span class='ss-color'>${anchorSS}%</span> + <span class='ss-color'>${savingsSS}%</span>) = <strong>${ssCombo.toFixed(2)}%</strong></span>`,
                   csBreakdown,
                   ssRating,
-                  csRating
+                  csRating,
+                  membershipTier: a.comboOnly ? "Combo Only" : a.Tier
               });
           }
       }
@@ -1602,9 +1603,21 @@ function generateCombos() {
   manualSummary.innerHTML = '';
 
   if (combos.length > 0) {
-      let table = `<table class="table table-bordered"><thead><tr><th>Anchor</th><th>Savings</th><th>SS Combo</th><th>CS Combo</th><th>SS Rating</th><th>CS Rating</th></tr></thead><tbody>`;
+      let table = `<table id="resultsTable" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Anchor</th>
+          <th>Savings</th>
+          <th>SS Combo</th>
+          <th>CS Combo</th>
+          <th>SS Rating</th>
+          <th>CS Rating</th>
+          <th>Membership Tier</th>
+        </tr>
+      </thead>
+      <tbody>`;
+
       Object.keys(groupedCombos).forEach(anchor => {
-          table += `<tr class='table-info'><td colspan='6'><strong>${anchor}</strong></td></tr>`;
           groupedCombos[anchor].forEach(combo => {
               const ssBadge = combo.ssRating === 'Excellent'
                   ? "<span class='badge bg-success'>Excellent</span>"
@@ -1619,25 +1632,40 @@ function generateCombos() {
                       : "<span class='badge bg-warning text-dark'>Needs Review</span>";
 
               table += `<tr>
-    <td>${combo.anchor}</td>
-    <td>${combo.savings}</td>
-    <td>${combo.ssBreakdown}</td>
-    <td>${combo.csBreakdown}</td>
-    <td>${ssBadge}</td>
-    <td>${csBadge}</td>
-  </tr>`;
+                <td>${combo.anchor}</td>
+                <td>${combo.savings}</td>
+                <td data-order="${parseFloat(combo.ssCombo)}">${combo.ssBreakdown}</td>
+                <td data-order="${parseFloat(combo.csCombo)}">${combo.csBreakdown}</td>
+                <td>${ssBadge}</td>
+                <td>${csBadge}</td>
+                <td>${combo.membershipTier}</td>
+              </tr>`;
           });
       });
+
       table += '</tbody></table>';
       container.innerHTML += table;
+
+      // ✅ DataTables initialization
+      if ($.fn.DataTable.isDataTable('#resultsTable')) {
+          $('#resultsTable').DataTable().destroy();
+      }
+      $('#resultsTable').DataTable({
+          pageLength: 10,
+          lengthMenu: [5, 10, 25, 50, 100],
+          order: [],
+          autoWidth: false
+      });
   } else {
       container.innerHTML += '<div class="alert alert-warning">No valid combos found.</div>';
   }
 
   summarizeCombos(combos, minThreshold);
-
   document.getElementById("singleAdjustmentSection").style.display = "none";
 }
+
+
+
 
 
 
