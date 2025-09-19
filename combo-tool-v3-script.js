@@ -71,7 +71,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Sports', 'Fashion'], 
+   Category: ['Sports', 'Fashion', 'Shoes'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
    {
@@ -95,7 +95,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Fashion',], 
+   Category: ['Fashion', "Men's Fashion", "Women's  Fashion"], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -179,7 +179,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Sports', 'Fashion'], 
+   Category: ['Sports', 'Fashion', "Men's Fashion", "Women's  Fashion"], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -239,7 +239,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Fashion'], 
+   Category: ['Fashion', 'Beauty'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -419,7 +419,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Sports','Fashion' ], 
+   Category: ['Sports','Fashion', 'Shoes'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -431,7 +431,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Entertainment' ], 
+   Category: ['Entertainment', 'Gaming' ], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -611,7 +611,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Sports','Fashion'], 
+   Category: ['Sports','Fashion', 'Shoes'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -623,7 +623,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Entertainment'], 
+   Category: ['Entertainment', 'Gaming'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -707,7 +707,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Dining'], 
+   Category: ['Dining', 'Coffee'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -731,7 +731,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Dining'], 
+   Category: ['Dining', 'Coffee'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -815,7 +815,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Entertainment'], 
+   Category: ['Entertainment', 'Gaming'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -827,7 +827,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Fashion'], 
+   Category: ['Fashion', 'Beauty'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -839,7 +839,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Entertainment'], 
+   Category: ['Entertainment', 'Gaming'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -971,7 +971,7 @@ const cards= [
    availableCS: true, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Entertainment'], 
+   Category: ['Entertainment', 'Gaming'], 
    Tier: 'SuperSaver,ClubSaver' 
   },
   {
@@ -1091,7 +1091,7 @@ const cards= [
    availableCS: false, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Dining'], 
+   Category: ['Dining', 'Coffee'], 
    Tier: 'SuperSaver,' 
   },    
   {
@@ -1175,7 +1175,7 @@ const cards= [
    availableCS: false, 
    Super7: false,  
    adjustable: true, 
-   Category: ['Dining'], 
+   Category: ['Dining', 'Coffee'], 
    Tier: 'SuperSaver,' 
   }, 
   {
@@ -1336,7 +1336,7 @@ const cards= [
       availableCS: false,  
       Super7: false, 
       adjustable: true, 
-      Category: [''],
+      Category: ['Dining'],
       Tier: 'SuperSaver,ClubSaver', 
       Status: 'To be added by Dev' 
   },
@@ -1466,7 +1466,7 @@ const cards= [
       availableCS: false,  
       Super7: false, 
       adjustable: true, 
-      Category: [''],
+      Category: ["Men's Fashion", "Women's  Fashion"],
       Tier: 'SuperSaver,ClubSaver', 
       Status: 'DEsigns Complete-Retailer On Hold' 
   },
@@ -1482,12 +1482,26 @@ const cards= [
       Category: [''],
       Tier: 'SuperSaver,ClubSaver', 
       Status: 'DEsigns Complete-Retailer On Hold' 
+  },
+  {
+    Name: 'Ulta Beauty',  
+    SS: 9.90, 
+    CS: 6.40, 
+    tillo: 9.95, 
+    comboOnly: false, 
+    availableCS: true, 
+    Super7: false,  
+    adjustable: true, 
+    Category: ['Fashion', 'Beauty'], 
+    Tier: 'SuperSaver,ClubSaver',
+    Status: 'Live on Production'
   }
+  
  
 ];
 
 
-const categories = ['Auto', 'Dining', 'Entertainment', 'Fashion', 'Gasoline', 'Grocery', 'Home', 'Pets', 'Pharmacy', 'Sports', 'Super 7', 'Travel'];
+const categories = ['Auto', 'Beauty', 'Coffee', 'Dining', 'Entertainment', 'Fashion', "Men's Fashion", "Women's  Fashion", 'Gaming', 'Gasoline', 'Grocery', 'Home', 'Pets', 'Pharmacy', 'Shoes', 'Sports', 'Super 7', 'Travel'];
 const categoryDropdown = document.getElementById("categoryDropdown");
 categories.forEach(cat => {
     const opt = document.createElement("option");
